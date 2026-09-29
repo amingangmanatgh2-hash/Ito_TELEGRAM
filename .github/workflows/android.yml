@@ -212,18 +212,21 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      # به‌جای بیلد دوباره، همان APK جاب قبلی را می‌گیریم: هم سریع‌تر، هم دقیقاً همان چیزی
-      # که به دست کاربر می‌رسد تست می‌شود.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: ""
+
+      # به‌جای بیلد دوباره، همان APK جاب قبلی را می‌گیریم
       - name: دریافت APK از جاب بیلد
         uses: actions/download-artifact@v4
         with:
           name: ito-apks
           path: apks
-
-      - name: فهرست APK ها
-        run: |
-          mkdir -p ci-logs
-          find apks -name '*.apk' -printf '%p %s\n' | tee -a ci-logs/smoke.log
 
       - name: فعال‌سازی KVM
         run: |
@@ -231,38 +234,58 @@ jobs:
             | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm || echo "KVM نیست!"
 
-      - name: اجرا روی شبیه‌ساز و شکار کرش
-        id: emu
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          target: google_apis
-          arch: x86_64
-          profile: pixel_5
-          disable-animations: true
-          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back emulated -camera-front emulated
-          script: |
-            set -x
-            exec > >(tee -a "$GITHUB_WORKSPACE/ci-logs/smoke.log") 2>&1
-            adb wait-for-device
-            adb shell getprop ro.build.version.sdk
-            APK=$(find apks -name '*x86_64-debug.apk' | head -1)
-            [ -n "$APK" ] || APK=$(find apks -name '*universal-debug.apk' | head -1)
-            echo "نصب $APK"
-            adb install -r -t "$APK" || { adb logcat -d > "$GITHUB_WORKSPACE/ci-logs/logcat.txt"; echo "نصب ناموفق"; exit 1; }
-            adb logcat -c
-            adb shell am start -W -n ito.telegram.debug/ito.telegram.MainActivity
-            sleep 20
-            adb shell dumpsys activity activities | grep -i -m 5 'ito.telegram' || true
-            adb shell monkey -p ito.telegram.debug --throttle 200 --pct-syskeys 0 -v 600 || true
-            sleep 5
-            adb logcat -d > "$GITHUB_WORKSPACE/ci-logs/logcat.txt"
-            if grep -E "FATAL EXCEPTION|ANR in ito.telegram" "$GITHUB_WORKSPACE/ci-logs/logcat.txt"; then
-              grep -B 5 -A 60 "FATAL EXCEPTION" "$GITHUB_WORKSPACE/ci-logs/logcat.txt" || true
-              exit 1
-            fi
-            echo "بدون کرش"
+      # شبیه‌ساز را دستی بالا می‌آوریم تا تمام خروجی داخل فایل لاگ بیفتد
+      # (لاگِ خودِ اکشن از این سندباکس قابل دانلود نیست).
+      - name: نصب و بوت شبیه‌ساز
+        id: boot
+        run: |
+          mkdir -p ci-logs
+          exec > >(tee -a ci-logs/smoke.log) 2>&1
+          set -x
+          find apks -name '*.apk' -printf '%p %s\n'
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager --install "platform-tools" "emulator" "system-images;android-30;google_apis;x86_64" 2>&1 | tail -5
+          echo "$ANDROID_HOME/emulator" >> $GITHUB_PATH
+          export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
+          echo no | avdmanager create avd -n ito -k "system-images;android-30;google_apis;x86_64" -d pixel_5 --force
+          printf 'hw.lcd.density=440\nhw.ramSize=3072\nvm.heapSize=512\nhw.camera.front=emulated\nhw.camera.back=emulated\n' \
+            >> "$HOME/.android/avd/ito.avd/config.ini"
+          nohup emulator -avd ito -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim \
+            -no-snapshot -accel on -camera-front emulated -camera-back emulated \
+            > ci-logs/emulator-boot.log 2>&1 &
+          adb wait-for-device
+          timeout 600 adb shell 'while [ "$(getprop sys.boot_completed)" != "1" ]; do sleep 3; done' || {
+            echo "شبیه‌ساز بوت نشد"; tail -60 ci-logs/emulator-boot.log; exit 1; }
+          adb shell input keyevent 82 || true
+          adb shell settings put global window_animation_scale 0.0
+          adb shell settings put global transition_animation_scale 0.0
+          adb shell settings put global animator_duration_scale 0.0
+          adb shell getprop ro.build.version.sdk
+          echo "شبیه‌ساز آماده است"
+
+      - name: نصب و شکار کرش
+        if: steps.boot.outcome == 'success'
+        run: |
+          exec > >(tee -a ci-logs/smoke.log) 2>&1
+          set -x
+          export PATH="$ANDROID_HOME/platform-tools:$PATH"
+          APK=$(find apks -name '*x86_64-debug.apk' | head -1)
+          [ -n "$APK" ] || APK=$(find apks -name '*universal-debug.apk' | head -1)
+          adb install -r -t "$APK"
+          adb logcat -c
+          adb shell am start -W -n ito.telegram.debug/ito.telegram.MainActivity
+          sleep 20
+          adb shell dumpsys activity activities | grep -m 5 -i 'ito.telegram' || true
+          adb shell monkey -p ito.telegram.debug --throttle 200 --pct-syskeys 0 -v 600 || true
+          sleep 5
+          adb logcat -d > ci-logs/logcat.txt
+          if grep -E "FATAL EXCEPTION|ANR in ito.telegram" ci-logs/logcat.txt; then
+            grep -B 5 -A 60 "FATAL EXCEPTION" ci-logs/logcat.txt || true
+            exit 1
+          fi
+          echo "بدون کرش"
 
       - name: ثبت نتیجه‌ی شبیه‌ساز در مخزن
         if: always()
@@ -271,15 +294,18 @@ jobs:
           {
             echo "=== شبیه‌ساز: ${{ job.status }} — اجرا #${GITHUB_RUN_NUMBER} ==="
             echo
-            echo "--- خروجی اسکریپت (۴۰۰ خط آخر) ---"
-            tail -400 ci-logs/smoke.log 2>/dev/null || echo "اسکریپت اصلاً اجرا نشد (شبیه‌ساز بالا نیامد)"
+            echo "--- خروجی اسکریپت (۵۰۰ خط آخر) ---"
+            tail -500 ci-logs/smoke.log 2>/dev/null || echo "هیچ خروجی‌ای نبود"
+            echo
+            echo "--- بوت شبیه‌ساز (۶۰ خط آخر) ---"
+            tail -60 ci-logs/emulator-boot.log 2>/dev/null || echo "بوت‌لاگی نبود"
             echo
             echo "--- ردپای کرش در لاگ‌کت ---"
             grep -E "FATAL EXCEPTION|AndroidRuntime|ANR in|ito\.telegram" ci-logs/logcat.txt 2>/dev/null | tail -200 \
               || echo "لاگ‌کتی ثبت نشد"
           } > ci-logs/emulator.txt
-          rm -f ci-logs/smoke.log
-          head -c 300000 ci-logs/logcat.txt > ci-logs/logcat-tail.txt 2>/dev/null || true
+          rm -f ci-logs/smoke.log ci-logs/emulator-boot.log
+          tail -c 300000 ci-logs/logcat.txt > ci-logs/logcat-tail.txt 2>/dev/null || true
           rm -f ci-logs/logcat.txt
           git config user.name "ito-build-bot"
           git config user.email "actions@github.com"
