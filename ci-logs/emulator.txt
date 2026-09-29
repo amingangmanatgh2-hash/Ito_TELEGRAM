@@ -1,4 +1,4 @@
-=== شبیه‌ساز: failure — اجرا #5 ===
+=== شبیه‌ساز: success — اجرا #6 ===
 
 --- خروجی اسکریپت (۵۰۰ خط آخر) ---
 + find apks -name '*.apk' -printf '%p %s\n'
@@ -14,20 +14,468 @@ apks/outputs/apk/release/app-arm64-v8a-release.apk 46901732
 + sdkmanager --licenses
 yes: standard output: Broken pipe
 + sdkmanager --install platform-tools emulator 'system-images;android-30;google_apis;x86_64'
-+ tail -5
-Loading package information...                                                  Loading local repository...                                                     [                                       ] 3% Loading local repository...        [                                       ] 3% Fetch remote repository...         [=                                      ] 3% Fetch remote repository...         [=                                      ] 4% Fetch remote repository...         [=                                      ] 5% Fetch remote repository...         [==                                     ] 5% Fetch remote repository...         [==                                     ] 6% Fetch remote repository...         [==                                     ] 7% Fetch remote repository...         [==                                     ] 7% Computing updates...               [===                                    ] 8% Computing updates...               [===                                    ] 10% Computing updates...              [===                                    ] 10% Installing Android Emulator       [===                                    ] 10% Downloading emulator-linux_x64-159[====                                   ] 10% Downloading emulator-linux_x64-159[====                                   ] 11% Downloading emulator-linux_x64-159[====                                   ] 12% Downloading emulator-linux_x64-159[=====                                  ] 13% Downloading emulator-linux_x64-159[=====                                  ] 14% Downloading emulator-linux_x64-159[=====                                  ] 15% Downloading emulator-linux_x64-159[======                                 ] 15% Downloading emulator-linux_x64-159[======                                 ] 16% Downloading emulator-linux_x64-159[======                                 ] 17% Downloading emulator-linux_x64-159[=======                                ] 18% Downloading emulator-linux_x64-159[=======                                ] 19% Downloading emulator-linux_x64-159[=======                                ] 20% Downloading emulator-linux_x64-159[========                               ] 20% Downloading emulator-linux_x64-159[========                               ] 21% Downloading emulator-linux_x64-159[========                               ] 21% Unzipping...                      [========                               ] 21% Unzipping... emulator/            [========                               ] 21% Unzipping... emulator/resources/  [========                               ] 21% Unzipping... emulator/qsn         [========                               ] 21% Unzipping... emulator/emulator    [========                               ] 21% Unzipping... emulator/netsimd     [========                               ] 22% Unzipping... emulator/netsimd     [========                               ] 22% Unzipping... emulator/bin64/      [========                               ] 22% Unzipping... emulator/qemu/       [========                               ] 22% Unzipping... emulator/NOTICE.txt  [========                               ] 22% Unzipping... emulator/crashpad_han[========                               ] 22% Unzipping... emulator/source.prope[========                               ] 22% Unzipping... emulator/nimble_bridg[========                               ] 22% Unzipping... emulator/LICENSE     [========                               ] 22% Unzipping... emulator/lib/        [========                               ] 22% Unzipping... emulator/qemu-img    [========                               ] 22% Unzipping... emulator/include/    [========                               ] 22% Unzipping... emulator/NOTICE.csv  [========                               ] 22% Unzipping... emulator/lib64/      [========                               ] 22% Unzipping... emulator/emulator-che[========                               ] 22% Unzipping... emulator/crashreport [========                               ] 22% Unzipping... emulator/mksdcard    [========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/To[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/sk[========                               ] 22% Unzipping... emulator/resources/de[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/po[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/resources/sk[========                               ] 22% Unzipping... emulator/resources/ma[========                               ] 22% Unzipping... emulator/bin64/e2fsck[========                               ] 22% Unzipping... emulator/bin64/fsck.e[========                               ] 22% Unzipping... emulator/bin64/tune2f[========                               ] 22% Unzipping... emulator/bin64/resize[========                               ] 22% Unzipping... emulator/bin64/mkfs.e[========                               ] 22% Unzipping... emulator/qemu/linux-x[=========                              ] 23% Unzipping... emulator/qemu/linux-x[=========                              ] 24% Unzipping... emulator/qemu/linux-x[=========                              ] 25% Unzipping... emulator/qemu/linux-x[==========                             ] 25% Unzipping... emulator/qemu/linux-x[==========                             ] 25% Unzipping... emulator/lib/emulator[==========                             ] 25% Unzipping... emulator/lib/rtc_serv[==========                             ] 25% Unzipping... emulator/lib/advanced[==========                             ] 25% Unzipping... emulator/lib/cmake/  [==========                             ] 25% Unzipping... emulator/lib/emulator[==========                             ] 25% Unzipping... emulator/lib/control_[==========                             ] 25% Unzipping... emulator/lib/emulated[==========                             ] 25% Unzipping... emulator/lib/rtc_serv[==========                             ] 25% Unzipping... emulator/lib/emu-orig[==========                             ] 25% Unzipping... emulator/lib/hardware[==========                             ] 25% Unzipping... emulator/lib/pkgconfi[==========                             ] 25% Unzipping... emulator/lib/pc-bios/[==========                             ] 25% Unzipping... emulator/lib/snapshot[==========                             ] 25% Unzipping... emulator/lib/adb_serv[==========                             ] 25% Unzipping... emulator/lib/hostapd.[==========                             ] 25% Unzipping... emulator/lib/grpc_end[==========                             ] 25% Unzipping... emulator/lib/ca-bundl[==========                             ] 25% Unzipping... emulator/lib/ui_contr[==========                             ] 25% Unzipping... emulator/lib/snapshot[==========                             ] 25% Unzipping... emulator/lib/ice_conf[==========                             ] 25% Unzipping... emulator/lib/libflatb[==========                             ] 26% Unzipping... emulator/lib/libflatb[==========                             ] 26% Unzipping... emulator/lib/emulator[==========                             ] 26% Unzipping... emulator/lib/waterfal[==========                             ] 26% Unzipping... emulator/lib/emulated[==========                             ] 26% Unzipping... emulator/lib/cmake/fl[==========                             ] 26% Unzipping... emulator/lib/pkgconfi[==========                             ] 26% Unzipping... emulator/lib/pc-bios/[==========                             ] 26% Unzipping... emulator/include/flat[==========                             ] 26% Unzipping... emulator/lib64/libgli[==========                             ] 26% Unzipping... emulator/lib64/libpro[==========                             ] 26% Unzipping... emulator/lib64/qt/   [==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libgfx[==========                             ] 26% Unzipping... emulator/lib64/gles_l[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/vulkan[==========                             ] 26% Unzipping... emulator/lib64/gles_s[==========                             ] 26% Unzipping... emulator/lib64/libemu[==========                             ] 26% Unzipping... emulator/lib64/libpro[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libtcm[==========                             ] 26% Unzipping... emulator/lib64/libima[==========                             ] 26% Unzipping... emulator/lib64/libc++[==========                             ] 26% Unzipping... emulator/lib64/liband[==========                             ] 26% Unzipping... emulator/lib64/libabs[==========                             ] 26% Unzipping... emulator/lib64/gles_a[==========                             ] 26% Unzipping... emulator/lib64/libsha[==========                             ] 26% Unzipping... emulator/lib64/libc++[==========                             ] 26% Unzipping... emulator/lib64/qt/res[==========                             ] 26% Unzipping... emulator/lib64/qt/lib[==========                             ] 26% Unzipping... emulator/lib64/qt/tra[==========                             ] 26% Unzipping... emulator/lib64/qt/plu[==========                             ] 26% Unzipping... emulator/lib64/qt/res[==========                             ] 27% Unzipping... emulator/lib64/qt/res[==========                             ] 27% Unzipping... emulator/lib64/qt/lib[===========                            ] 28% Unzipping... emulator/lib64/qt/lib[===========                            ] 29% Unzipping... emulator/lib64/qt/lib[===========                            ] 30% Unzipping... emulator/lib64/qt/lib[============                           ] 30% Unzipping... emulator/lib64/qt/lib[============                           ] 30% Unzipping... emulator/lib64/qt/tra[============                           ] 31% Unzipping... emulator/lib64/qt/tra[============                           ] 31% Unzipping... emulator/lib64/qt/plu[============                           ] 31% Unzipping... emulator/lib64/gles_l[============                           ] 31% Unzipping... emulator/lib64/vulkan[============                           ] 32% Unzipping... emulator/lib64/vulkan[============                           ] 32% Unzipping... emulator/lib64/gles_s[============                           ] 32% Unzipping... emulator/lib64/gles_a[=============                          ] 33% Unzipping... emulator/lib64/gles_a[=====================                  ] 55% Unzipping... emulator/lib64/gles_a[=====================                  ] 55% Installing Google APIs Intel x86_6[=====================                  ] 55% Downloading x86_64-30_r16.zip... e[======================                 ] 55% Downloading x86_64-30_r16.zip... e[======================                 ] 56% Downloading x86_64-30_r16.zip... e[======================                 ] 57% Downloading x86_64-30_r16.zip... e[=======================                ] 58% Downloading x86_64-30_r16.zip... e[=======================                ] 59% Downloading x86_64-30_r16.zip... e[=======================                ] 60% Downloading x86_64-30_r16.zip... e[========================               ] 60% Downloading x86_64-30_r16.zip... e[========================               ] 61% Downloading x86_64-30_r16.zip... e[========================               ] 62% Downloading x86_64-30_r16.zip... e[=========================              ] 63% Downloading x86_64-30_r16.zip... e[=========================              ] 64% Downloading x86_64-30_r16.zip... e[=========================              ] 65% Downloading x86_64-30_r16.zip... e[==========================             ] 65% Downloading x86_64-30_r16.zip... e[==========================             ] 66% Downloading x86_64-30_r16.zip... e[==========================             ] 66% Unzipping... emulator/lib64/gles_a[==========================             ] 66% Unzipping... x86_64/NOTICE.txt    [==========================             ] 66% Unzipping... x86_64/VerifiedBootPa[==========================             ] 66% Unzipping... x86_64/advancedFeatur[==========================             ] 66% Unzipping... x86_64/build.prop    [==========================             ] 66% Unzipping... x86_64/encryptionkey.[==========================             ] 66% Unzipping... x86_64/kernel-ranchu [==========================             ] 66% Unzipping... x86_64/ramdisk.img   [==========================             ] 66% Unzipping... x86_64/source.propert[==========================             ] 66% Unzipping... x86_64/system.img    [==========================             ] 67% Unzipping... x86_64/system.img    [===========================            ] 68% Unzipping... x86_64/system.img    [===========================            ] 69% Unzipping... x86_64/system.img    [===========================            ] 70% Unzipping... x86_64/system.img    [============================           ] 70% Unzipping... x86_64/system.img    [============================           ] 71% Unzipping... x86_64/system.img    [============================           ] 72% Unzipping... x86_64/system.img    [=============================          ] 73% Unzipping... x86_64/system.img    [=============================          ] 74% Unzipping... x86_64/system.img    [=============================          ] 75% Unzipping... x86_64/system.img    [==============================         ] 75% Unzipping... x86_64/system.img    [==============================         ] 76% Unzipping... x86_64/system.img    [==============================         ] 77% Unzipping... x86_64/system.img    [==============================         ] 77% Unzipping... x86_64/userdata.img  [==============================         ] 77% Unzipping... x86_64/vendor.img    [==============================         ] 77% Unzipping... x86_64/data/local.pro[==============================         ] 77% Unzipping... x86_64/data/misc/apns[==============================         ] 77% Unzipping... x86_64/data/misc/emul[==============================         ] 77% Unzipping... x86_64/data/misc/gcec[==============================         ] 77% Unzipping... x86_64/data/misc/wifi[==============================         ] 77% Unzipping... x86_64/data/system/di[==============================         ] 78% Unzipping... x86_64/data/system/di[=======================================] 100% Unzipping... x86_64/data/system/d
++ tr '\r' '\n'
++ tail -3
+[=======================================] 100% Unzipping... x86_64/data/system/d
+
 
 + echo /usr/local/lib/android/sdk/emulator
 + export PATH=/usr/local/lib/android/sdk/emulator:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/16.0/bin:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 + PATH=/usr/local/lib/android/sdk/emulator:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/16.0/bin:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++ export ANDROID_AVD_HOME=/home/runner/.android/avd
++ ANDROID_AVD_HOME=/home/runner/.android/avd
++ mkdir -p /home/runner/.android/avd
 + echo no
 + avdmanager create avd -n ito -k 'system-images;android-30;google_apis;x86_64' -d pixel_5 --force
 Loading local repository...                                                     [=========                              ] 25% Loading local repository...       [=========                              ] 25% Fetch remote repository...        [=======================================] 100% Fetch remote repository...       
 Auto-selecting single ABI x86_64
-+ printf 'hw.lcd.density=440\nhw.ramSize=3072\nvm.heapSize=512\nhw.camera.front=emulated\nhw.camera.back=emulated\n'
-/home/runner/work/_temp/164fd790-5929-4f45-bf65-682298c40a95.sh: line 10: /home/runner/.android/avd/ito.avd/config.ini: No such file or directory
+++ find /home/runner -name config.ini -path '*ito.avd*'
+++ head -1
++ CFG=/home/runner/.android/avd/ito.avd/config.ini
++ echo 'پرونده‌ی تنظیمات AVD: /home/runner/.android/avd/ito.avd/config.ini'
+پرونده‌ی تنظیمات AVD: /home/runner/.android/avd/ito.avd/config.ini
++ '[' -n /home/runner/.android/avd/ito.avd/config.ini ']'
++ printf 'hw.ramSize=3072\nvm.heapSize=512\nhw.camera.front=emulated\nhw.camera.back=emulated\ndisk.dataPartition.size=6G\n'
++ adb wait-for-device
++ nohup emulator -avd ito -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -no-snapshot -accel on -camera-front emulated -camera-back emulated
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
++ timeout 600 adb shell 'while [ "$(getprop sys.boot_completed)" != "1" ]; do sleep 3; done'
++ adb shell input keyevent 82
++ adb shell settings put global window_animation_scale 0.0
++ adb shell settings put global transition_animation_scale 0.0
++ adb shell settings put global animator_duration_scale 0.0
++ adb shell getprop ro.build.version.sdk
+30
++ echo 'شبیه‌ساز آماده است'
+شبیه‌ساز آماده است
++ export PATH=/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/emulator:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/16.0/bin:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
++ PATH=/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/emulator:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/16.0/bin:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+++ head -1
+++ find apks -name '*x86_64-debug.apk'
++ APK=apks/outputs/apk/debug/app-x86_64-debug.apk
++ '[' -n apks/outputs/apk/debug/app-x86_64-debug.apk ']'
++ adb install -r -t apks/outputs/apk/debug/app-x86_64-debug.apk
+Performing Streamed Install
+Success
++ adb logcat -c
++ adb shell am start -W -n ito.telegram.debug/ito.telegram.MainActivity
+Starting: Intent { cmp=ito.telegram.debug/ito.telegram.MainActivity }
+Status: ok
+LaunchState: COLD
+Activity: ito.telegram.debug/ito.telegram.MainActivity
+TotalTime: 3650
+WaitTime: 3652
+Complete
++ sleep 20
++ adb shell dumpsys activity activities
++ grep -m 5 -i ito.telegram
+    mResumedActivity: ActivityRecord{af9781b u0 ito.telegram.debug/ito.telegram.MainActivity t9}
+    * Task{ea49e0b #9 visible=true type=standard mode=fullscreen translucent=false A=10167:ito.telegram.debug U=0 StackId=9 sz=1}
+      affinity=10167:ito.telegram.debug
+      intent={flg=0x10000000 cmp=ito.telegram.debug/ito.telegram.MainActivity}
+      mActivityComponent=ito.telegram.debug/ito.telegram.MainActivity
++ adb shell monkey -p ito.telegram.debug --throttle 200 --pct-syskeys 0 -v 600
+  bash arg: -p
+  bash arg: ito.telegram.debug
+  bash arg: --throttle
+  bash arg: 200
+  bash arg: --pct-syskeys
+  bash arg: 0
+  bash arg: -v
+  bash arg: 600
+args: [-p, ito.telegram.debug, --throttle, 200, --pct-syskeys, 0, -v, 600]
+ arg: "-p"
+ arg: "ito.telegram.debug"
+ arg: "--throttle"
+ arg: "200"
+ arg: "--pct-syskeys"
+ arg: "0"
+ arg: "-v"
+ arg: "600"
+data="ito.telegram.debug"
+arg="--throttle" mCurArgData="null" mNextArg=3 argwas="--throttle" nextarg="200"
+data="200"
+arg="--pct-syskeys" mCurArgData="null" mNextArg=5 argwas="--pct-syskeys" nextarg="0"
+data="0"
+:Monkey: seed=1790895246592 count=600
+:AllowPackage: ito.telegram.debug
+:IncludeCategory: android.intent.category.LAUNCHER
+:IncludeCategory: android.intent.category.MONKEY
+// Event percentages:
+//   0: 15.306122%
+//   1: 10.204082%
+//   2: 2.0408163%
+//   3: 15.306122%
+//   4: -0.0%
+//   5: -0.0%
+//   6: 25.510204%
+//   7: 15.306122%
+//   8: -0.0%
+//   9: 2.0408163%
+//   10: 1.0204082%
+//   11: 13.265306%
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Touch (ACTION_DOWN): 0:(599.0,1176.0)
+    // Injection Failed
+:Sending Touch (ACTION_UP): 0:(603.1844,1165.8771)
+    // Injection Failed
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-5.0)
+:Sending Touch (ACTION_DOWN): 0:(164.0,1132.0)
+:Sending Touch (ACTION_UP): 0:(158.3304,1147.8915)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,1.0)
+:Sending Touch (ACTION_DOWN): 0:(773.0,1907.0)
+:Sending Touch (ACTION_UP): 0:(772.8594,1894.0725)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-3.0)
+:Sending Touch (ACTION_DOWN): 0:(758.0,1084.0)
+:Sending Touch (ACTION_UP): 0:(717.4343,1105.7024)
+:Sending Touch (ACTION_DOWN): 0:(623.0,975.0)
+:Sending Touch (ACTION_UP): 0:(615.8013,947.4905)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,0.0)
+    //[calendar_time:2026-09-29 18:31:38.019  system_uptime:71543]
+    // Sending event #100
+:Sending Touch (ACTION_DOWN): 0:(726.0,196.0)
+:Sending Touch (ACTION_UP): 0:(726.1289,203.65424)
+:Sending Touch (ACTION_DOWN): 0:(542.0,215.0)
+:Sending Touch (ACTION_UP): 0:(536.8939,228.0253)
+:Sending Flip keyboardOpen=false
+Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
+    // Injection Failed
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Touch (ACTION_DOWN): 0:(619.0,1830.0)
+:Sending Touch (ACTION_UP): 0:(607.90784,1801.5768)
+:Sending Touch (ACTION_DOWN): 0:(1018.0,1873.0)
+:Sending Touch (ACTION_UP): 0:(1017.49255,1861.0233)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,2.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,0.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-3.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+    // Rejecting start of Intent { act=com.android.intent.action.SHOW_BRIGHTNESS_DIALOG cmp=com.android.systemui/.settings.BrightnessDialog } in package com.android.systemui
+:Sending Touch (ACTION_DOWN): 0:(355.0,220.0)
+:Sending Touch (ACTION_UP): 0:(350.64908,220.8995)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,2.0)
+    //[calendar_time:2026-09-29 18:31:44.015  system_uptime:77537]
+    // Sending event #200
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,-2.0)
+:Sending Touch (ACTION_DOWN): 0:(552.0,1650.0)
+:Sending Touch (ACTION_UP): 0:(560.9305,1648.0295)
+:Sending Touch (ACTION_DOWN): 0:(160.0,961.0)
+:Sending Touch (ACTION_UP): 0:(164.17867,985.1104)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,1.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,0.0)
+:Sending Flip keyboardOpen=true
+Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
+    // Injection Failed
+    // Rejecting start of Intent { cmp=com.google.android.googlequicksearchbox/com.google.android.apps.gsa.staticplugins.opa.OpaActivity } in package com.google.android.googlequicksearchbox
+:Sending Trackball (ACTION_MOVE): 0:(2.0,1.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,4.0)
+:Sending Touch (ACTION_DOWN): 0:(625.0,1385.0)
+:Sending Touch (ACTION_UP): 0:(683.6303,1401.4143)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,1.0)
+:Sending Touch (ACTION_DOWN): 0:(1059.0,856.0)
+:Sending Touch (ACTION_UP): 0:(1054.0166,855.85376)
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,4.0)
+    //[calendar_time:2026-09-29 18:31:47.915  system_uptime:81437]
+    // Sending event #300
+:Sending Touch (ACTION_DOWN): 0:(578.0,720.0)
+:Sending Touch (ACTION_UP): 0:(568.7548,719.45)
+:Sending Touch (ACTION_DOWN): 0:(671.0,6.0)
+:Sending Touch (ACTION_UP): 0:(660.3736,5.903178)
+:Sending Touch (ACTION_DOWN): 0:(965.0,1695.0)
+:Sending Touch (ACTION_UP): 0:(999.2547,1763.266)
+:Sending Touch (ACTION_DOWN): 0:(627.0,358.0)
+:Sending Touch (ACTION_UP): 0:(627.73145,395.2714)
+:Sending Touch (ACTION_DOWN): 0:(665.0,1897.0)
+:Sending Touch (ACTION_UP): 0:(736.84186,1817.8865)
+:Sending Touch (ACTION_DOWN): 0:(820.0,1780.0)
+:Sending Touch (ACTION_UP): 0:(819.6643,1777.2356)
+:Sending Touch (ACTION_DOWN): 0:(688.0,1736.0)
+:Sending Touch (ACTION_UP): 0:(724.4232,1709.8508)
+:Sending Touch (ACTION_DOWN): 0:(1017.0,1195.0)
+:Sending Touch (ACTION_UP): 0:(1013.7036,1195.36)
+:Sending Touch (ACTION_DOWN): 0:(837.0,469.0)
+:Sending Touch (ACTION_UP): 0:(830.76196,453.80286)
+:Sending Touch (ACTION_DOWN): 0:(1037.0,1864.0)
+:Sending Touch (ACTION_UP): 0:(1036.8779,1868.2235)
+:Sending Flip keyboardOpen=false
+Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
+    // Injection Failed
+:Sending Touch (ACTION_DOWN): 0:(768.0,501.0)
+    //[calendar_time:2026-09-29 18:31:56.082  system_uptime:89605]
+    // Sending event #400
+:Sending Touch (ACTION_UP): 0:(766.2743,500.2682)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-1.0)
+:Sending Flip keyboardOpen=true
+Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
+    // Injection Failed
+:Sending Trackball (ACTION_MOVE): 0:(-5.0,4.0)
+:Sending Touch (ACTION_DOWN): 0:(500.0,2064.0)
+:Sending Touch (ACTION_UP): 0:(524.5599,2071.8442)
+    // Rejecting start of Intent { act=com.android.intent.action.SHOW_BRIGHTNESS_DIALOG cmp=com.android.systemui/.settings.BrightnessDialog } in package com.android.systemui
+:Sending Trackball (ACTION_MOVE): 0:(1.0,4.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Touch (ACTION_DOWN): 0:(846.0,496.0)
+:Sending Touch (ACTION_UP): 0:(866.5404,562.1747)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,4.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,4.0)
+    //[calendar_time:2026-09-29 18:31:59.477  system_uptime:93001]
+    // Sending event #500
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,1.0)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,-2.0)
+:Sending Touch (ACTION_DOWN): 0:(30.0,888.0)
+:Sending Touch (ACTION_UP): 0:(0.0,934.2432)
+:Sending Flip keyboardOpen=false
+Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
+    // Injection Failed
+:Sending Touch (ACTION_DOWN): 0:(264.0,2054.0)
+:Sending Touch (ACTION_UP): 0:(262.71912,2062.293)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-3.0)
+Events injected: 600
+:Sending rotation degree=0, persist=false
+:Dropped: keys=0 pointers=2 trackballs=0 flips=5 rotations=0
+## Network stats: elapsed time=31506ms (0ms mobile, 0ms wifi, 31506ms not connected)
+// Monkey finished
++ sleep 5
++ adb logcat -d
++ grep -E 'FATAL EXCEPTION|ANR in ito.telegram' ci-logs/logcat.txt
++ echo 'بدون کرش'
+بدون کرش
 
 --- بوت شبیه‌ساز (۶۰ خط آخر) ---
-بوت‌لاگی نبود
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+INFO         | Graphics Adapter Vendor Google (Google Inc.)
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+INFO         | Userspace boot properties:
+INFO         |   android.bootanim=0
+INFO         |   android.qemud=1
+INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.serialno=EMULATOR37X1X11X0
+INFO         |   androidboot.vbmeta.digest=fe75c2a5d8acc56679b9ff248d9bbb4830bcd72c5bca68461d9e9de20914a4e1
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6144
+INFO         |   qemu=1
+INFO         |   qemu.avd_name=ito
+INFO         |   qemu.camera_hq_edge_processing=0
+INFO         |   qemu.camera_protocol_ver=1
+INFO         |   qemu.dalvik.vm.heapsize=576m
+INFO         |   qemu.encrypt=1
+INFO         |   qemu.gles=1
+INFO         |   qemu.gltransport=pipe
+INFO         |   qemu.gltransport.drawFlushInterval=800
+INFO         |   qemu.hwcodec.avcdec=2
+INFO         |   qemu.hwcodec.hevcdec=2
+INFO         |   qemu.hwcodec.vpxdec=2
+INFO         |   qemu.opengles.version=196608
+INFO         |   qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   qemu.skin=1080x2340
+INFO         |   qemu.uirenderer=skiagl
+INFO         |   qemu.virtiowifi=1
+INFO         |   qemu.vsync=60
+WARNING: cannnot unmap ptr 0x7f82d3e01000 as it is in the protected range from 0x7f8213e00000 to 0x7f82d4000000
+INFO         | Monitoring duration of emulator setup.
+WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port
+INFO         | Using security allow list from: /usr/local/lib/android/sdk/emulator/lib/emulator_access.json
+INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/2639/jwks/bea5e7f7-2eaa-4533-b838-c05eac879e72/active.jwk
+INFO         | Scanning /run/user/1001/avd/running/2639/jwks/bea5e7f7-2eaa-4533-b838-c05eac879e72 for jwk keys.
+INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
+INFO         | Advertising in: /run/user/1001/avd/running/pid_2639.ini
+INFO         | Successfully initialized netsim WiFi
+INFO         | Setting display: 0 configuration to: 1080x2340, dpi: 440x440 
+INFO         | setDisplayActiveConfig: id:0, 1080x2340
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
+INFO         | Boot completed in 34467 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+ERROR        | bad color buffer handle 315
 
 --- ردپای کرش در لاگ‌کت ---
+09-29 18:31:06.129  1607  1652 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: op android:read_external_storage
+09-29 18:31:06.135  1607  1652 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: op android:read_external_storage
+09-29 18:31:06.526  1607  1607 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: package android.intent.action.PACKAGE_ADDED
+09-29 18:31:06.527  1685  1685 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) }
+09-29 18:31:06.533   691   691 D AvrcpMediaPlayerList: Name of package changed: ito.telegram.debug
+09-29 18:31:06.569   691   691 D AvrcpMediaPlayerList: Name of package changed: ito.telegram.debug
+09-29 18:31:07.611   499  2472 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-29 18:31:07.743   499   540 I ActivityManager: Start proc 2824:ito.telegram.debug/u0a167 for pre-top-activity {ito.telegram.debug/ito.telegram.MainActivity}
+09-29 18:31:09.371  1153  2808 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+09-29 18:31:09.376  1153  2808 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+09-29 18:31:09.380  1153  2917 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:ito.telegram.debug flg=0x5000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+09-29 18:31:09.397  1378  2198 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+09-29 18:31:09.601  1378  2198 I ChromeSync: [Persistence,AffiliationManager] One of affiliation or grouping data for android://Nes11PeBqtxKGQ-FGg-6sIejdSUddnqVIDYBbnhzTLLBp2cyYfWi7XIt3rFNbCCwZb5mqNnPEVeKPhXZQtUvhg==@ito.telegram.debug/ was not found. Marking affiliation data as stale...
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{fa3a4b1 com.google.android.youtube/10147} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6c13d96 com.google.android.googlequicksearchbox/10123} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{90f1d17 com.google.android.apps.messaging/10144} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{91cdaed com.google.android.apps.wellbeing/10113} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{c4b9d22 com.google.android.partnersetup/10116} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{5e73b3 com.google.android.apps.youtube.music/10140} BLOCKED
+09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{ee9fd70 com.google.android.cellbroadcastreceiver/10162} BLOCKED
+09-29 18:31:13.896   426  2825 I iorapd  : Perfetto TraceBuffer saved to file: /data/misc/iorapd/ito.telegram.debug/1/ito.telegram.MainActivity/raw_traces/1790706673895005866.perfetto_trace.pb
+09-29 18:31:14.304   499  1221 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver
+09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
+09-29 18:31:14.462  1153  2898 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:ito.telegram.debug flg=0x5000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
+09-29 18:31:14.847  2824  3317 D ProfileInstaller: Installing profile for ito.telegram.debug
+09-29 18:31:16.475   499   538 D ArtManagerInternalImpl: /data/misc/iorapd/ito.telegram.debug/1/ito.telegram.MainActivity/compiled_traces/compiled_trace.pb doesn't exist
+09-29 18:31:16.476   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +3s650ms
+09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6c13d96 com.google.android.googlequicksearchbox/10123} BLOCKED
+09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{90f1d17 com.google.android.apps.messaging/10144} BLOCKED
+09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{c776d3c com.android.camera2/10136} BLOCKED
+09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{a89fac5 com.google.android.apps.docs/10138} BLOCKED
+09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{80e61d9 com.google.android.calendar/10146} BLOCKED
+09-29 18:31:25.728   499   528 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
+09-29 18:31:31.582  5197  5197 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-29 18:31:31.603  5197  5197 I AndroidRuntime: Using default boot image
+09-29 18:31:31.603  5197  5197 I AndroidRuntime: Leaving lock profiling enabled
+09-29 18:31:31.869  5197  5197 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+09-29 18:31:31.869  5197  5197 W Monkey  : args: [-p, ito.telegram.debug, --throttle, 200, --pct-syskeys, 0, -v, 600]
+09-29 18:31:31.869  5197  5197 W Monkey  :  arg: "ito.telegram.debug"
+09-29 18:31:31.870  5197  5197 W Monkey  : data="ito.telegram.debug"
+09-29 18:31:31.880  5197  5197 I Monkey  : :AllowPackage: ito.telegram.debug
+09-29 18:31:31.888  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-29 18:31:31.890   499   527 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-29 18:31:31.891  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-29 18:31:32.234   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +343ms
+09-29 18:31:32.350   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:32.490   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:32.815   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:33.232   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:33.547   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:33.752   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:33.954   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{fa3a4b1 com.google.android.youtube/10147} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6c13d96 com.google.android.googlequicksearchbox/10123} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{b5f2006 com.google.android.setupwizard/10115} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{91cdaed com.google.android.apps.wellbeing/10113} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{a41e20c com.google.android.apps.maps/10137} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{de6a6c7 com.google.android.videos/10142} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6efd4f4 com.google.android.apps.photos/10133} BLOCKED
+09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{e9a65da com.google.android.projection.gearhead/10117} BLOCKED
+09-29 18:31:34.252   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:34.310   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:34.736   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:35.027   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:35.046   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:35.251   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:35.619   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:35.724  1403  1403 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-29 18:31:35.796  1403  1403 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-29 18:31:36.080   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:36.165   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:37.043   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:37.106   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:37.608   499   590 W InputDispatcher: Dispatching key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} even though there are other unprocessed events
+09-29 18:31:38.025   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:38.040   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:38.245   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:38.739   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:40.125   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:40.347  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-29 18:31:40.349   499  1654 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-29 18:31:40.349  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-29 18:31:40.980   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{bb6a452 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-29 18:31:40.982   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +632ms
+09-29 18:31:41.013   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:41.286   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:41.839   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:42.178   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:42.586   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:44.016   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:44.243   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:44.447   499   590 D InputDispatcher: Waiting to send key to Window{a9dc470 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:45.502   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:45.569  1403  1403 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-29 18:31:45.697  1403  1403 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-29 18:31:46.133   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:46.554   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:46.774   499   590 D InputDispatcher: Waiting to send key to Window{3662545 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:47.380   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:47.587  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-29 18:31:47.589   499  1812 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-29 18:31:47.589  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-29 18:31:47.793   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{695f097 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-29 18:31:47.897   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +307ms
+09-29 18:31:47.919   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:48.243   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:48.683   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:49.088   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{695f097 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-29 18:31:50.061   499  5390 I PackageDexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/base.apk pkg=ito.telegram.debug isa=x86_64 dexoptFlags=boot_complete,debuggable,public,enable_hidden_api_checks targetFilter=verify oatDir=/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/oat classLoaderContext=PCL[]{}
+09-29 18:31:50.063   424  1480 V installd: DexInv: --- BEGIN '/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/base.apk' ---
+09-29 18:31:50.071  5397  5397 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=9 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --debuggable --classpath-dir=/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w== --class-loader-context=PCL[]{} --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
+09-29 18:31:50.963   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:51.166   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:51.595   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:51.807   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:52.217   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:52.335  5397  5415 I chatty  : uid=50167(ito.telegram.debug) /apex/com.android.art/bin/dex2oat32 identical 1 line
+09-29 18:31:52.647   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:52.720   424  1480 V installd: DexInv: --- END '/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/base.apk' (success) ---
+09-29 18:31:52.762   499  5390 I BackgroundDexOptService: Pinning optimized code {android, ito.telegram.debug}
+09-29 18:31:52.763   499  5390 D IorapForwardingService: onPackagesUpdated: ito.telegram.debug
+09-29 18:31:53.051   499   590 D InputDispatcher: Waiting to send key to Window{185e77e u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:53.254   499   590 W InputDispatcher: Window Window{185e77e u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} already unregistered input channel
+09-29 18:31:53.455   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:53.861   499   590 D InputDispatcher: Waiting to send key to Window{3c6b748 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:54.869   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:55.475   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:55.679   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:55.881   499   590 D InputDispatcher: Waiting to send key to Window{c7ecb42 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:56.287   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:56.518   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:56.920   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
+09-29 18:31:56.931   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:56.943   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:57.150   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:57.558   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:57.682  1403  1403 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-29 18:31:57.713  1403  1403 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-29 18:31:58.222   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:58.842   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:59.045   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:31:59.685  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-29 18:31:59.686   499   843 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-29 18:31:59.688  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-29 18:31:59.895   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{d26865f u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-29 18:32:00.110   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:00.134   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +389ms
+09-29 18:32:00.333   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:00.856   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:01.886   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:02.168   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:02.421   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:02.762   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-29 18:32:03.396  5197  5197 I AndroidRuntime: VM exiting with result code 0.
