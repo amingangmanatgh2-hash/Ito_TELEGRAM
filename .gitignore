@@ -1,0 +1,21 @@
+# Gradle / Android
+.gradle/
+build/
+app/build/
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# امضا
+*.jks
+*.keystore
+
+# پایتون
+__pycache__/
+*.pyc
+
+# سیستم
+.DS_Store
