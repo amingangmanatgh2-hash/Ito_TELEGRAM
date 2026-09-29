@@ -170,7 +170,7 @@ jobs:
           git push origin HEAD:"${GITHUB_REF_NAME}" || echo "پوش لاگ ناموفق"
 
       - name: کامیت APK داخل مخزن
-        if: ${{ success() && github.event_name == 'workflow_dispatch' && inputs.commit_apk }}
+        if: ${{ success() && ((github.event_name == 'workflow_dispatch' && inputs.commit_apk) || contains(github.event.head_commit.message, '[apk]')) }}
         run: |
           set -e
           mkdir -p dist
@@ -178,7 +178,7 @@ jobs:
           ARM64=$(find app/build/outputs/apk/release -name '*arm64*.apk' | head -1)
           ANY=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
           cp "${ARM64:-$ANY}" dist/ito-telegram-arm64-v8a-release.apk
-          if [ "${{ inputs.apk_abi }}" = "all" ]; then
+          if [ "${{ inputs.apk_abi }}" = "all" ] || echo "${{ github.event.head_commit.message }}" | grep -q '\[apk-all\]'; then
             ARM32=$(find app/build/outputs/apk/release -name '*armeabi*.apk' | head -1)
             [ -n "$ARM32" ] && cp "$ARM32" dist/ito-telegram-armeabi-v7a-release.apk || true
           fi
