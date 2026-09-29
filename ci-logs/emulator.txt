@@ -1,1 +1,13 @@
-=== شبیه‌ساز: failure — اجرا #2 ===
+=== شبیه‌ساز: failure — اجرا #4 ===
+
+--- خروجی اسکریپت (۴۰۰ خط آخر) ---
+apks/outputs/apk/debug/app-armeabi-v7a-debug.apk 55097531
+apks/outputs/apk/debug/app-x86_64-debug.apk 72253906
+apks/outputs/apk/debug/app-universal-debug.apk 151357719
+apks/outputs/apk/debug/app-arm64-v8a-debug.apk 66671821
+apks/outputs/apk/release/app-x86_64-release.apk 52483817
+apks/outputs/apk/release/app-universal-release.apk 131587630
+apks/outputs/apk/release/app-armeabi-v7a-release.apk 35327442
+apks/outputs/apk/release/app-arm64-v8a-release.apk 46901732
+
+--- ردپای کرش در لاگ‌کت ---
