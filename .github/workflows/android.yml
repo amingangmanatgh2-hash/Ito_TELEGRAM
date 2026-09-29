@@ -246,12 +246,17 @@ jobs:
           set -x
           find apks -name '*.apk' -printf '%p %s\n'
           yes | sdkmanager --licenses > /dev/null 2>&1 || true
-          sdkmanager --install "platform-tools" "emulator" "system-images;android-30;google_apis;x86_64" 2>&1 | tail -5
+          sdkmanager --install "platform-tools" "emulator" "system-images;android-30;google_apis;x86_64" 2>&1 | tr '\r' '\n' | tail -3
           echo "$ANDROID_HOME/emulator" >> $GITHUB_PATH
           export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools:$PATH"
+          export ANDROID_AVD_HOME="$HOME/.android/avd"
+          mkdir -p "$ANDROID_AVD_HOME"
           echo no | avdmanager create avd -n ito -k "system-images;android-30;google_apis;x86_64" -d pixel_5 --force
-          printf 'hw.lcd.density=440\nhw.ramSize=3072\nvm.heapSize=512\nhw.camera.front=emulated\nhw.camera.back=emulated\n' \
-            >> "$HOME/.android/avd/ito.avd/config.ini"
+          CFG=$(find "$HOME" -name config.ini -path '*ito.avd*' 2>/dev/null | head -1)
+          echo "پرونده‌ی تنظیمات AVD: ${CFG:-پیدا نشد}"
+          if [ -n "$CFG" ]; then
+            printf 'hw.ramSize=3072\nvm.heapSize=512\nhw.camera.front=emulated\nhw.camera.back=emulated\ndisk.dataPartition.size=6G\n' >> "$CFG"
+          fi
           nohup emulator -avd ito -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim \
             -no-snapshot -accel on -camera-front emulated -camera-back emulated \
             > ci-logs/emulator-boot.log 2>&1 &
