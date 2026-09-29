@@ -29,6 +29,8 @@ jobs:
     name: بیلد و تست
     runs-on: ubuntu-latest
     timeout-minutes: 60
+    env:
+      GRADLE_OPTS: -Dorg.gradle.jvmargs=-Xmx5g
     steps:
       - uses: actions/checkout@v4
         with:
@@ -52,10 +54,8 @@ jobs:
 
       - name: بازتولید کاتالوگ قابلیت‌ها
         run: |
-          python3 tools/gen_features.py
-          if ! git diff --quiet -- app/src/main/assets/features.json; then
-            echo "::warning::features.json با خروجی مولد فرق داشت و به‌روز شد"
-          fi
+          mkdir -p ci-logs
+          python3 tools/gen_features.py 2>&1 | tee -a ci-logs/build.log
           python3 - <<'PY'
           import json
           d = json.load(open("app/src/main/assets/features.json", encoding="utf-8"))
@@ -66,10 +66,10 @@ jobs:
       - name: دریافت TDLib از پیش ساخته‌شده
         run: |
           set -o pipefail
-          gradle :app:fetchTdlib --no-daemon --stacktrace | tail -30
-          echo "--- محتوای TDLib ---"
-          find app/build/tdlib/jniLibs -name '*.so' -printf '%p %s\n' 2>/dev/null || true
-          ls app/build/tdlib/java/org/drinkless/tdlib 2>/dev/null | head || true
+          gradle :app:fetchTdlib --no-daemon --stacktrace 2>&1 | tee -a ci-logs/build.log | tail -20
+          echo "--- محتوای TDLib ---" | tee -a ci-logs/build.log
+          find app/build/tdlib/jniLibs -name '*.so' -printf '%p %s\n' 2>&1 | tee -a ci-logs/build.log || true
+          ls app/build/tdlib/java/org/drinkless/tdlib 2>&1 | tee -a ci-logs/build.log || true
           if [ -z "$(find app/build/tdlib/jniLibs -name 'libtdjni.so' 2>/dev/null)" ]; then
             echo "TDLIB_OK=false" >> $GITHUB_ENV
             echo "::warning::TDLib دانلود نشد؛ APK در حالت آفلاین ساخته می‌شود"
@@ -78,10 +78,14 @@ jobs:
           fi
 
       - name: تست‌های واحد
-        run: gradle :app:testDebugUnitTest --no-daemon --stacktrace
+        run: |
+          set -o pipefail
+          gradle :app:testDebugUnitTest --no-daemon --stacktrace 2>&1 | tee -a ci-logs/build.log | tail -40
 
       - name: لینت
-        run: gradle :app:lintDebug --no-daemon || true
+        run: |
+          set -o pipefail
+          gradle :app:lintDebug --no-daemon 2>&1 | tee -a ci-logs/build.log | tail -20 || true
 
       - name: ساخت کلید امضا
         run: |
@@ -90,15 +94,17 @@ jobs:
             -alias ito \
             -keyalg RSA -keysize 2048 -validity 10000 \
             -storepass itoTelegram -keypass itoTelegram \
-            -dname "CN=Ito Telegram, OU=Ito, O=Ito, L=Tehran, S=Tehran, C=IR"
+            -dname "CN=Ito Telegram, OU=Ito, O=Ito, L=Tehran, S=Tehran, C=IR" > /dev/null
 
       - name: بیلد APK دیباگ و ریلیز
         run: |
-          gradle :app:assembleDebug :app:assembleRelease --no-daemon --stacktrace
+          set -o pipefail
+          gradle :app:assembleDebug :app:assembleRelease --no-daemon --stacktrace 2>&1 | tee -a ci-logs/build.log | tail -40
           echo "--- خروجی‌ها ---"
-          find app/build/outputs/apk -name '*.apk' -printf '%p %s\n'
+          find app/build/outputs/apk -name '*.apk' -printf '%p %s\n' | tee -a ci-logs/build.log
 
       - name: گزارش
+        if: always()
         run: |
           {
             echo "### نتیجه‌ی بیلد ایتو"
@@ -107,10 +113,11 @@ jobs:
             echo ""
             echo "| فایل | حجم |"
             echo "| --- | --- |"
-            find app/build/outputs/apk -name '*.apk' -printf '| %f | %s بایت |\n'
+            find app/build/outputs/apk -name '*.apk' -printf '| %f | %s بایت |\n' 2>/dev/null || true
           } >> $GITHUB_STEP_SUMMARY
 
       - name: آپلود APK ها
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: ito-apks
@@ -120,33 +127,48 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-      - name: آپلود گزارش تست در صورت شکست
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: ito-test-reports
-          path: |
-            app/build/reports/tests/**
-            app/build/reports/lint-results-debug.html
-          if-no-files-found: ignore
+      # ---- لاگ را داخل خود مخزن می‌گذاریم، چون دانلود لاگ اکشن از همه‌جا ممکن نیست
+      - name: ثبت لاگ بیلد در مخزن
+        if: always()
+        run: |
+          mkdir -p ci-logs
+          tail -c 400000 ci-logs/build.log > ci-logs/last-build.log 2>/dev/null || true
+          {
+            echo "=== وضعیت: ${{ job.status }} — اجرا #${GITHUB_RUN_NUMBER} ==="
+            echo "=== خطاهای برجسته ==="
+            grep -n -E "^e: |error: |FAILED|Execution failed|Caused by:|Unresolved reference|AssertionError|Compilation error" ci-logs/build.log | tail -120 || true
+          } > ci-logs/errors.txt
+          cp -f app/build/reports/tests/testDebugUnitTest/index.html ci-logs/unit-tests.html 2>/dev/null || true
+          find app/build/test-results -name '*.xml' -exec sh -c 'grep -l "<failure\|<error" "$1" >> ci-logs/failed-tests.txt' _ {} \; 2>/dev/null || true
+          for f in $(cat ci-logs/failed-tests.txt 2>/dev/null | head -5); do
+            echo "=== $f ===" >> ci-logs/errors.txt
+            cat "$f" >> ci-logs/errors.txt
+          done
+          rm -f ci-logs/build.log
+          git config user.name "ito-build-bot"
+          git config user.email "actions@github.com"
+          git add -f ci-logs
+          git commit -m "ci: لاگ اجرای ${GITHUB_RUN_NUMBER} [skip ci]" || echo "بدون تغییر"
+          git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
+          git push origin HEAD:"${GITHUB_REF_NAME}" || echo "پوش لاگ ناموفق"
 
       - name: کامیت APK داخل مخزن
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.commit_apk }}
+        if: ${{ success() && github.event_name == 'workflow_dispatch' && inputs.commit_apk }}
         run: |
           set -e
           mkdir -p dist
           rm -f dist/*.apk
-          UNIVERSAL=$(find app/build/outputs/apk/release -name '*universal*.apk' | head -1)
-          ANY_RELEASE=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
-          SRC=${UNIVERSAL:-$ANY_RELEASE}
-          cp "$SRC" dist/ito-telegram-release.apk
-          cp app/build/outputs/apk/debug/*.apk dist/ito-telegram-debug.apk 2>/dev/null || true
+          ARM64=$(find app/build/outputs/apk/release -name '*arm64*.apk' | head -1)
+          ANY=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
+          cp "${ARM64:-$ANY}" dist/ito-telegram-arm64-v8a-release.apk
+          ARM32=$(find app/build/outputs/apk/release -name '*armeabi*.apk' | head -1)
+          [ -n "$ARM32" ] && cp "$ARM32" dist/ito-telegram-armeabi-v7a-release.apk || true
           ls -l dist
           git config user.name "ito-build-bot"
           git config user.email "actions@github.com"
-          git add -f dist app/src/main/assets/features.json
-          git commit -m "build: APK ایتو از اجرای ${GITHUB_RUN_NUMBER}" || echo "چیزی برای کامیت نبود"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git add -f dist
+          git commit -m "build: APK ایتو از اجرای ${GITHUB_RUN_NUMBER} [skip ci]" || echo "بدون تغییر"
+          git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
           git push origin HEAD:"${GITHUB_REF_NAME}"
 
   smoke:
@@ -154,13 +176,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    continue-on-error: true
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: "17"
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-35 build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: "8.11.1"
@@ -182,21 +206,35 @@ jobs:
           disable-animations: true
           script: |
             gradle :app:assembleDebug --no-daemon
-            APK=$(find app/build/outputs/apk/debug -name '*.apk' | head -1)
+            APK=$(find app/build/outputs/apk/debug -name '*x86_64*.apk' -o -name '*universal*.apk' | head -1)
+            echo "نصب $APK"
             adb install -r "$APK"
             adb logcat -c
             adb shell am start -n ito.telegram.debug/ito.telegram.MainActivity
-            sleep 12
-            adb shell monkey -p ito.telegram.debug --throttle 120 --pct-syskeys 0 -v 600 || true
+            sleep 15
+            adb shell monkey -p ito.telegram.debug --throttle 150 --pct-syskeys 0 -v 500 || true
             sleep 5
             adb logcat -d > logcat.txt
-            echo "=== دنبال کرش می‌گردیم ==="
             if grep -E "FATAL EXCEPTION|ANR in ito.telegram" logcat.txt; then
-              echo "::error::کرش پیدا شد"
-              grep -A 40 "FATAL EXCEPTION" logcat.txt || true
+              grep -B 5 -A 40 "FATAL EXCEPTION" logcat.txt || true
               exit 1
             fi
-            echo "بدون کرش ✅"
+            echo "بدون کرش"
+
+      - name: ثبت نتیجه‌ی شبیه‌ساز در مخزن
+        if: always()
+        run: |
+          mkdir -p ci-logs
+          {
+            echo "=== شبیه‌ساز: ${{ job.status }} — اجرا #${GITHUB_RUN_NUMBER} ==="
+            grep -E "FATAL EXCEPTION|ANR in|ito.telegram" logcat.txt 2>/dev/null | tail -100 || echo "لاگی نبود"
+          } > ci-logs/emulator.txt
+          git config user.name "ito-build-bot"
+          git config user.email "actions@github.com"
+          git add -f ci-logs/emulator.txt
+          git commit -m "ci: نتیجه‌ی شبیه‌ساز ${GITHUB_RUN_NUMBER} [skip ci]" || echo "بدون تغییر"
+          git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
+          git push origin HEAD:"${GITHUB_REF_NAME}" || echo "پوش ناموفق"
 
       - name: آپلود لاگ‌کت
         if: always()

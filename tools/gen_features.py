@@ -668,6 +668,18 @@ features_extra.register(add)
 features_extra2.register(add, len(AUTOMATION_TRIGGERS), len(AUTOMATION_ACTIONS))
 CATEGORIES += features_extra.EXTRA_CATEGORIES + features_extra2.EXTRA2_CATEGORIES
 
+# --- بررسی صداقت قبل از تولید خروجی
+titles = {}
+for f in features:
+    t = f["title"]
+    if t in titles:
+        raise SystemExit("duplicate title: %s  (%s vs %s)" % (t, titles[t], f["id"]))
+    titles[t] = f["id"]
+for f in features:
+    if f["impl"] == "data" and f["cat"] != "wordlist":
+        if not (f.get("payload") or {}).get("text"):
+            raise SystemExit("data item without content: " + f["id"])
+
 stats = {}
 for f in features:
     stats[f["impl"]] = stats.get(f["impl"], 0) + 1

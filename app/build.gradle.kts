@@ -23,8 +23,16 @@ plugins {
 val tdlibDir = layout.buildDirectory.dir("tdlib").get().asFile
 val tdlibJavaDir = File(tdlibDir, "java")
 val tdlibJniDir = File(tdlibDir, "jniLibs")
-val tdlibZipUrl = providers.environmentVariable("TDLIB_ZIP_URL")
-    .getOrElse("https://core.telegram.org/tdlib/tdlib.zip")
+// اولی: بسته‌ی رسمیِ Telegram X (TDLib 1.8.67، همه‌ی ABI ها) — دومی: بسته‌ی قدیمی core.telegram.org
+val tdlibUrls: List<String> = providers.environmentVariable("TDLIB_ZIP_URL").orNull
+    ?.let { listOf(it) }
+    ?: listOf(
+        "https://github.com/CodexofLost/tdlib-packed/releases/download/v1.8.67/tdlib-v1.8.67.zip",
+        "https://core.telegram.org/tdlib/tdlib.zip",
+    )
+
+/** فقط این معماری‌ها بسته‌بندی می‌شوند تا APK بی‌خود چاق نشود. */
+val wantedAbis = setOf("arm64-v8a", "armeabi-v7a", "x86_64")
 val skipTdlib = providers.environmentVariable("ITO_SKIP_TDLIB").getOrElse("0") == "1"
 
 val fetchTdlib = tasks.register("fetchTdlib") {
@@ -45,13 +53,29 @@ val fetchTdlib = tasks.register("fetchTdlib") {
             return@doLast
         }
         val zip = File(tdlibDir, "tdlib.zip")
-        try {
-            logger.lifecycle("[ito] Downloading TDLib from $tdlibZipUrl ...")
-            URL(tdlibZipUrl).openStream().use { input ->
-                zip.outputStream().use { output -> input.copyTo(output) }
+        var downloaded = false
+        for (url in tdlibUrls) {
+            try {
+                logger.lifecycle("[ito] Downloading TDLib from $url ...")
+                val conn = URL(url).openConnection()
+                conn.connectTimeout = 60_000
+                conn.readTimeout = 300_000
+                conn.setRequestProperty("User-Agent", "ito-build")
+                conn.getInputStream().use { input ->
+                    zip.outputStream().use { output -> input.copyTo(output) }
+                }
+                if (zip.length() > 1_000_000) {
+                    downloaded = true
+                    logger.lifecycle("[ito] Downloaded ${zip.length()} bytes")
+                    break
+                }
+                logger.warn("[ito] Archive too small (${zip.length()} bytes), trying next mirror")
+            } catch (e: Exception) {
+                logger.warn("[ito] Download failed from $url: ${e.message}")
             }
-        } catch (e: Exception) {
-            logger.warn("[ito] TDLib download failed (${e.message}). Offline-only build.")
+        }
+        if (!downloaded) {
+            logger.warn("[ito] No TDLib archive available. Offline-only build.")
             return@doLast
         }
         val unpacked = File(tdlibDir, "unpacked")
@@ -72,16 +96,20 @@ val fetchTdlib = tasks.register("fetchTdlib") {
         dest.mkdirs()
         pkgDir.listFiles()?.filter { it.extension == "java" }?.forEach { it.copyTo(File(dest, it.name), true) }
 
-        var abis = 0
-        unpacked.walkTopDown().filter { it.isFile && it.name == "libtdjni.so" }.forEach { so ->
+        // همه‌ی کتابخانه‌های نیتیوِ همراه (tdjni و وابستگی‌هایش) کپی می‌شوند
+        val abis = HashSet<String>()
+        unpacked.walkTopDown().filter { it.isFile && it.extension == "so" }.forEach { so ->
             val abi = so.parentFile.name
+            if (abi !in wantedAbis) return@forEach
             val out = File(tdlibJniDir, abi)
             out.mkdirs()
             so.copyTo(File(out, so.name), true)
-            abis++
+            abis += abi
         }
-        logger.lifecycle("[ito] TDLib ready: ${dest.listFiles()?.size ?: 0} java files, $abis native ABIs.")
-        if (abis > 0) marker.writeText("ok")
+        logger.lifecycle(
+            "[ito] TDLib ready: ${dest.listFiles()?.size ?: 0} java files, ABIs=${abis.sorted()}"
+        )
+        if (abis.isNotEmpty()) marker.writeText("ok")
     }
 }
 
@@ -103,7 +131,7 @@ android {
         abi {
             isEnable = true
             reset()
-            include("arm64-v8a", "armeabi-v7a")
+            include("arm64-v8a", "armeabi-v7a", "x86_64")
             isUniversalApk = true
         }
     }
