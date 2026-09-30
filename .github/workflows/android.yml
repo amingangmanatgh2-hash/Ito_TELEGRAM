@@ -176,8 +176,11 @@ jobs:
           git config user.email "actions@github.com"
           git add -f ci-logs
           git commit -m "ci: لاگ اجرای ${GITHUB_RUN_NUMBER} [skip ci]" || echo "بدون تغییر"
-          git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
-          git push origin HEAD:"${GITHUB_REF_NAME}" || echo "پوش لاگ ناموفق"
+          for i in 1 2 3; do
+            git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
+            git push origin HEAD:"${GITHUB_REF_NAME}" && break
+            sleep 10
+          done
 
       - name: کامیت APK داخل مخزن
         if: ${{ success() && ((github.event_name == 'workflow_dispatch' && inputs.commit_apk) || contains(github.event.head_commit.message, '[apk]')) }}
@@ -192,11 +195,19 @@ jobs:
           fi
           SIZE=$(stat -c%s "$UNI")
           echo "اندازه‌ی یونیورسال: $SIZE بایت"
-          if [ "$SIZE" -gt 99000000 ]; then
-            echo "::error::APK از سقف صد مگابایتیِ گیت‌هاب رد شد"
-            exit 1
+          LIMIT=99000000
+          if [ "$SIZE" -gt "$LIMIT" ]; then
+            # نقشه‌ی دوم: به‌جای یک فایلِ گنده، دو فایل جدا برای ۶۴ و ۳۲ بیتی
+            echo "::warning::یونیورسال بزرگ شد ($SIZE)؛ دو فایل جدا کامیت می‌شود"
+            A64=$(find app/build/outputs/apk/release -name '*arm64*.apk' | head -1)
+            A32=$(find app/build/outputs/apk/release -name '*armeabi*.apk' | head -1)
+            if [ -n "$A64" ]; then cp "$A64" dist/ito-telegram-64bit.apk; fi
+            if [ -n "$A32" ]; then cp "$A32" dist/ito-telegram-32bit.apk; fi
+            SPLIT_MODE=1
+          else
+            SPLIT_MODE=0
           fi
-          cp "$UNI" dist/ito-telegram-all-phones.apk
+          if [ "$SPLIT_MODE" = "0" ]; then cp "$UNI" dist/ito-telegram-all-phones.apk; fi
           {
             echo "# APK ایتو"
             echo
@@ -204,12 +215,21 @@ jobs:
             echo
             echo "| فایل | اندازه | معماری | اندروید |"
             echo "|---|---|---|---|"
-            echo "| \`ito-telegram-all-phones.apk\` | $(du -h dist/ito-telegram-all-phones.apk | cut -f1) | arm64-v8a + armeabi-v7a | ۷ به بالا |"
+            for f in dist/*.apk; do
+              case "$(basename "$f")" in
+                *all-phones*) ABI="arm64-v8a + armeabi-v7a (هر گوشی)" ;;
+                *64bit*) ABI="arm64-v8a (گوشی‌های ۶۴بیتی)" ;;
+                *32bit*) ABI="armeabi-v7a (گوشی‌های قدیمی ۳۲بیتی)" ;;
+                *) ABI="?" ;;
+              esac
+              echo "| \`$(basename "$f")\` | $(du -h "$f" | cut -f1) | $ABI | ۷ به بالا |"
+            done
             echo
-            echo "sha256: \`$(sha256sum dist/ito-telegram-all-phones.apk | cut -d' ' -f1)\`"
+            for f in dist/*.apk; do
+              echo "- sha256 \`$(basename "$f")\`: \`$(sha256sum "$f" | cut -d" " -f1)\`"
+            done
             echo
-            echo "یک فایل برای همه‌ی گوشی‌ها؛ هم ۶۴بیتی هم ۳۲بیتی. کافی است نصبش کنی،"
-            echo "شماره بزنی و کد را کپی کنی — بقیه‌اش خودکار است."
+            echo "کافی است نصبش کنی، شماره بزنی و کد را کپی کنی — بقیه‌اش خودکار است."
             echo
             echo "امضا: کلید یک‌بارمصرفِ همین اجرا. برای به‌روزرسانیِ روی‌هم، کلید خودتان را در Secrets بگذارید."
           } > dist/README.md

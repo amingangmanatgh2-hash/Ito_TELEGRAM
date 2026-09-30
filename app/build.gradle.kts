@@ -134,6 +134,14 @@ android {
         versionName = "1.0.0-ito"
         multiDexEnabled = true
         vectorDrawables.useSupportLibrary = true
+
+        // splits فقط تعیین می‌کند چند فایل بسازیم؛ این است که تعیین می‌کند اصلاً
+        // کدام .so داخل بسته برود. بدون این، APKِ یونیورسال همه‌ی معماری‌ها را
+        // برمی‌دارد و از سقف صد مگابایتیِ گیت‌هاب رد می‌شود.
+        ndk {
+            abiFilters.clear()
+            abiFilters.addAll(itoAbis)
+        }
     }
 
     splits {
