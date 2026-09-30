@@ -33,7 +33,7 @@ total: 2006
   cat widget     12
   cat lang       7
 کاتالوگ سالم است: 2006 قابلیت (core 939 / data 291 / combo 776)، 194 ابزار متن، 37 آیتم بزرگسال.
-سالم است: 30 فایل کاتلین بررسی شد.
+سالم است: 33 فایل کاتلین بررسی شد.
 
 Welcome to Gradle 8.11.1!
 
@@ -59,9 +59,9 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 [ito] Downloading TDLib from https://github.com/CodexofLost/tdlib-packed/releases/download/v1.8.67/tdlib-v1.8.67.zip ...
 [ito] Downloaded 42875342 bytes
 [ito] TDLib ready: 2 java files, ABIs=[arm64-v8a, armeabi-v7a, x86_64]
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790706032862.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790770894757.json
 
-BUILD SUCCESSFUL in 1m 5s
+BUILD SUCCESSFUL in 51s
 1 actionable task: 1 executed
 --- محتوای TDLib ---
 app/build/tdlib/jniLibs/x86_64/libcryptox.so 5032048
@@ -105,14 +105,14 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:parseDebugLocalResources
 > Task :app:processDebugMainManifest
 > Task :app:processDebugManifest
-> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:processDebugManifestForPackage
 > Task :app:javaPreCompileDebug
-> Task :app:javaPreCompileDebugUnitTest
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest FROM-CACHE
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
-> Task :app:processDebugManifestForPackage
 > Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
@@ -122,19 +122,20 @@ w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/tele
 w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:63:1 Annotation 'androidx.camera.core.ExperimentalGetImage' is not annotated with '@RequiresOptIn'. '@OptIn' has no effect.
 w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:68:26 'val LocalLifecycleOwner: ProvidableCompositionLocal<LifecycleOwner>' is deprecated. Moved to lifecycle-runtime-compose library in androidx.lifecycle.compose package.
 w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:213:1 Annotation 'androidx.camera.core.ExperimentalGetImage' is not annotated with '@RequiresOptIn'. '@OptIn' has no effect.
+w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/LoginScreen.kt:85:26 'val LocalLifecycleOwner: ProvidableCompositionLocal<LifecycleOwner>' is deprecated. Moved to lifecycle-runtime-compose library in androidx.lifecycle.compose package.
 
 > Task :app:compileDebugJavaWithJavac
 > Task :app:processDebugJavaRes
-> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:compileDebugUnitTestKotlin
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:processDebugUnitTestJavaRes
 > Task :app:testDebugUnitTest
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1790706096117.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1790770945276.json
 
-BUILD SUCCESSFUL in 1m 30s
-29 actionable tasks: 28 executed, 1 up-to-date
+BUILD SUCCESSFUL in 1m 4s
+29 actionable tasks: 27 executed, 1 from cache, 1 up-to-date
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
 
@@ -184,7 +185,7 @@ Wrote HTML report to file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/buil
 
 > Task :app:lintDebug
 /home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build/tdlib/java/org/drinkless/tdlib/TdApi.java: Error: Source file too large for lint to process (5036KB); the current max size is 20480KB. You can increase the limit by setting this system property: idea.max.intellisense.filesize=8192 (or even higher) [LintError]
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:123: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:132: Warning: Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the android.os.Build.VERSION_CODES javadoc for details. [OldTargetApi]
         targetSdk = 35
         ~~~~~~~~~~~~~~
 
@@ -206,7 +207,7 @@ Wrote HTML report to file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/buil
 
    https://developer.android.com/distribute/best-practices/develop/target-sdk.html
 
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/AndroidManifest.xml:10: Warning: Your app is currently not handling Selected Photos Access introduced in Android 14+ [SelectedPhotoAccess]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/AndroidManifest.xml:12: Warning: Your app is currently not handling Selected Photos Access introduced in Android 14+ [SelectedPhotoAccess]
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"
                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -220,46 +221,46 @@ Wrote HTML report to file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/buil
 
    https://developer.android.com/about/versions/14/changes/partial-photo-video-access
 
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:220: Warning: A newer version of androidx.core:core-ktx than 1.15.0 is available: 1.19.1 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:237: Warning: A newer version of androidx.core:core-ktx than 1.15.0 is available: 1.19.1 [GradleDependency]
     implementation("androidx.core:core-ktx:1.15.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:221: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.8.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:238: Warning: A newer version of androidx.appcompat:appcompat than 1.7.0 is available: 1.8.0 [GradleDependency]
     implementation("androidx.appcompat:appcompat:1.7.0")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:222: Warning: A newer version of androidx.activity:activity-compose than 1.9.3 is available: 1.13.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:239: Warning: A newer version of androidx.activity:activity-compose than 1.9.3 is available: 1.13.0 [GradleDependency]
     implementation("androidx.activity:activity-compose:1.9.3")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:223: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.8.7 is available: 2.11.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:240: Warning: A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.8.7 is available: 2.11.0 [GradleDependency]
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:224: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.8.7 is available: 2.11.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:241: Warning: A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.8.7 is available: 2.11.0 [GradleDependency]
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:225: Warning: A newer version of androidx.navigation:navigation-compose than 2.8.5 is available: 2.10.2 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:242: Warning: A newer version of androidx.navigation:navigation-compose than 2.8.5 is available: 2.10.2 [GradleDependency]
     implementation("androidx.navigation:navigation-compose:2.8.5")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:239: Warning: A newer version of androidx.camera:camera-core than 1.4.1 is available: 1.6.2 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:256: Warning: A newer version of androidx.camera:camera-core than 1.4.1 is available: 1.6.2 [GradleDependency]
     implementation("androidx.camera:camera-core:1.4.1")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:240: Warning: A newer version of androidx.camera:camera-camera2 than 1.4.1 is available: 1.6.2 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:257: Warning: A newer version of androidx.camera:camera-camera2 than 1.4.1 is available: 1.6.2 [GradleDependency]
     implementation("androidx.camera:camera-camera2:1.4.1")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:241: Warning: A newer version of androidx.camera:camera-lifecycle than 1.4.1 is available: 1.6.2 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:258: Warning: A newer version of androidx.camera:camera-lifecycle than 1.4.1 is available: 1.6.2 [GradleDependency]
     implementation("androidx.camera:camera-lifecycle:1.4.1")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:242: Warning: A newer version of androidx.camera:camera-view than 1.4.1 is available: 1.6.2 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:259: Warning: A newer version of androidx.camera:camera-view than 1.4.1 is available: 1.6.2 [GradleDependency]
     implementation("androidx.camera:camera-view:1.4.1")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:245: Warning: A newer version of androidx.security:security-crypto than 1.1.0-alpha06 is available: 1.1.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:262: Warning: A newer version of androidx.security:security-crypto than 1.1.0-alpha06 is available: 1.1.0 [GradleDependency]
     implementation("androidx.security:security-crypto:1.1.0-alpha06")
                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:247: Warning: A newer version of com.android.tools:desugar_jdk_libs than 2.1.3 is available: 2.1.5 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:264: Warning: A newer version of com.android.tools:desugar_jdk_libs than 2.1.3 is available: 2.1.5 [GradleDependency]
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.3")
                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:255: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:272: Warning: A newer version of androidx.test.ext:junit than 1.2.1 is available: 1.3.0 [GradleDependency]
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:256: Warning: A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0 [GradleDependency]
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:273: Warning: A newer version of androidx.test.espresso:espresso-core than 3.6.1 is available: 3.7.0 [GradleDependency]
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -285,6 +286,33 @@ Wrote HTML report to file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/buil
    Vendor: Jetpack Compose
    Identifier: androidx.compose.ui
    Feedback: https://issuetracker.google.com/issues/new?component=612128
+
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/build.gradle.kts:151: Warning: Missing x86_64 ABI support for ChromeOS [ChromeOsAbiSupport]
+            include(*itoAbis.toTypedArray())
+                     ~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ChromeOsAbiSupport":
+   To properly support ChromeOS, your Android application should have an x86
+   and/or x86_64 binary as part of the build configuration. To fix the issue,
+   ensure your files are properly optimized for ARM; the binary translator
+   will then ensure compatibility with x86. Alternatively, add an abiSplit for
+   x86 within your build.gradle file and create the required x86
+   dependencies.
+
+   https://developer.android.com/ndk/guides/abis
+
+/home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/AndroidManifest.xml:10: Error: Permission exists without corresponding hardware <uses-feature android:name="android.hardware.telephony" required="false"> tag [PermissionImpliesUnsupportedChromeOsHardware]
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+     ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "PermissionImpliesUnsupportedChromeOsHardware":
+   The <uses-permission> element should not require a permission that implies
+   an unsupported large screen hardware feature. Google Play assumes that
+   certain hardware related permissions indicate that the underlying hardware
+   features are required by default. To fix the issue, consider declaring the
+   corresponding <uses-feature> element with required="false" attribute.
+
+   https://developer.android.com/topic/arc/manifest.html#implied-features
 
 /home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:57: Information: Prefer mutableFloatStateOf instead of mutableStateOf [AutoboxingStateCreation from androidx.compose.runtime]
     var progress by mutableStateOf(0f)
@@ -348,11 +376,11 @@ Wrote HTML report to file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/buil
    application iconwill not show if your monochrome attribute is not also
    specified in android:roundIcon.
 
-1 errors, 21 warnings
+2 errors, 22 warnings
 
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_5-1790706186926.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_5-1790771010389.json
 
-BUILD SUCCESSFUL in 1m 5s
+BUILD SUCCESSFUL in 51s
 29 actionable tasks: 9 executed, 1 from cache, 19 up-to-date
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -421,13 +449,13 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 
 > Task :app:extractReleaseNativeSymbolTables
 > Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
-> Task :app:checkReleaseDuplicateClasses
 > Task :app:generateReleaseBuildConfig
+> Task :app:checkReleaseDuplicateClasses
 > Task :app:generateReleaseResValues FROM-CACHE
 > Task :app:checkReleaseAarMetadata
+> Task :app:expandReleaseL8ArtProfileWildcards
 > Task :app:mapReleaseSourceSetPaths
 > Task :app:generateReleaseResources
-> Task :app:expandReleaseL8ArtProfileWildcards
 > Task :app:packageReleaseResources
 > Task :app:parseReleaseLocalResources FROM-CACHE
 > Task :app:createReleaseCompatibleScreenManifests
@@ -444,20 +472,15 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 > Task :app:processReleaseManifestForPackage
 > Task :app:extractReleaseVersionControlInfo
 > Task :app:collectReleaseDependencies
+> Task :app:compressReleaseAssets
 > Task :app:sdkReleaseDependencyData
 > Task :app:validateSigningRelease
 > Task :app:writeReleaseAppMetadata
 > Task :app:writeReleaseSigningConfigVersions
-> Task :app:compressReleaseAssets
 > Task :app:mergeReleaseResources
 > Task :app:processReleaseResources
 > Task :app:convertLinkedResourcesToProtoRelease
 > Task :app:mergeExtDexDebug
-
-> Task :app:compileReleaseKotlin
-e: The daemon has terminated unexpectedly on startup attempt #1 with error code: 0. The daemon process output:
-    1. Kotlin compile daemon is ready
-
 > Task :app:packageDebug
 > Task :app:createDebugApkListingFileRedirect
 > Task :app:assembleDebug
@@ -467,6 +490,7 @@ w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/tele
 w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:63:1 Annotation 'androidx.camera.core.ExperimentalGetImage' is not annotated with '@RequiresOptIn'. '@OptIn' has no effect.
 w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:68:26 'val LocalLifecycleOwner: ProvidableCompositionLocal<LifecycleOwner>' is deprecated. Moved to lifecycle-runtime-compose library in androidx.lifecycle.compose package.
 w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/AgeScanScreen.kt:213:1 Annotation 'androidx.camera.core.ExperimentalGetImage' is not annotated with '@RequiresOptIn'. '@OptIn' has no effect.
+w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/telegram/ui/screens/LoginScreen.kt:85:26 'val LocalLifecycleOwner: ProvidableCompositionLocal<LifecycleOwner>' is deprecated. Moved to lifecycle-runtime-compose library in androidx.lifecycle.compose package.
 
 > Task :app:compileReleaseJavaWithJavac
 > Task :app:mergeReleaseGeneratedProguardFiles
@@ -482,15 +506,90 @@ w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/tele
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_7-1790706253459.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_7-1790771062829.json
 
-BUILD SUCCESSFUL in 4m 21s
+BUILD SUCCESSFUL in 3m 25s
 88 actionable tasks: 62 executed, 4 from cache, 22 up-to-date
-app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk 55097531
-app/build/outputs/apk/debug/app-x86_64-debug.apk 72253906
-app/build/outputs/apk/debug/app-universal-debug.apk 151357719
-app/build/outputs/apk/debug/app-arm64-v8a-debug.apk 66671821
-app/build/outputs/apk/release/app-x86_64-release.apk 52483817
-app/build/outputs/apk/release/app-universal-release.apk 131587630
-app/build/outputs/apk/release/app-armeabi-v7a-release.apk 35327442
-app/build/outputs/apk/release/app-arm64-v8a-release.apk 46901732
+app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk 55113939
+app/build/outputs/apk/debug/app-x86_64-debug.apk 72270314
+app/build/outputs/apk/debug/app-universal-debug.apk 137152414
+app/build/outputs/apk/debug/app-arm64-v8a-debug.apk 66688229
+app/build/outputs/apk/release/app-x86_64-release.apk 52500221
+app/build/outputs/apk/release/app-universal-release.apk 117382321
+app/build/outputs/apk/release/app-armeabi-v7a-release.apk 35343846
+app/build/outputs/apk/release/app-arm64-v8a-release.apk 46918136
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :app
+WARNING: The option setting 'android.defaults.buildfeatures.buildconfig=true' is deprecated.
+The current default is 'false'.
+It will be removed in version 9.0 of the Android Gradle plugin.
+To keep using this feature, add the following to your module-level build.gradle files:
+    android.buildFeatures.buildConfig = true
+or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build Files`.
+
+> Task :app:fetchTdlib UP-TO-DATE
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :app:mergeReleaseNativeLibs UP-TO-DATE
+> Task :app:stripReleaseDebugSymbols UP-TO-DATE
+> Task :app:extractReleaseNativeSymbolTables UP-TO-DATE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:mergeReleaseArtProfile UP-TO-DATE
+> Task :app:expandReleaseL8ArtProfileWildcards UP-TO-DATE
+> Task :app:buildKotlinToolingMetadata UP-TO-DATE
+> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateReleaseBuildConfig UP-TO-DATE
+> Task :app:checkReleaseAarMetadata UP-TO-DATE
+> Task :app:generateReleaseResValues UP-TO-DATE
+> Task :app:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :app:generateReleaseResources UP-TO-DATE
+> Task :app:mergeReleaseResources UP-TO-DATE
+> Task :app:packageReleaseResources UP-TO-DATE
+> Task :app:parseReleaseLocalResources UP-TO-DATE
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :app:processReleaseMainManifest UP-TO-DATE
+> Task :app:processReleaseManifest
+> Task :app:javaPreCompileRelease UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :app:mergeReleaseShaders UP-TO-DATE
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseAssets UP-TO-DATE
+> Task :app:compressReleaseAssets UP-TO-DATE
+> Task :app:extractReleaseVersionControlInfo UP-TO-DATE
+> Task :app:collectReleaseDependencies UP-TO-DATE
+> Task :app:sdkReleaseDependencyData UP-TO-DATE
+> Task :app:validateSigningRelease UP-TO-DATE
+> Task :app:writeReleaseAppMetadata UP-TO-DATE
+> Task :app:writeReleaseSigningConfigVersions UP-TO-DATE
+> Task :app:processReleaseManifestForPackage
+> Task :app:processReleaseResources
+> Task :app:compileReleaseKotlin UP-TO-DATE
+> Task :app:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :app:expandReleaseArtProfileWildcards UP-TO-DATE
+> Task :app:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :app:processReleaseJavaRes UP-TO-DATE
+> Task :app:mergeReleaseJavaResource UP-TO-DATE
+> Task :app:minifyReleaseWithR8 UP-TO-DATE
+> Task :app:l8DexDesugarLibRelease UP-TO-DATE
+> Task :app:compileReleaseArtProfile UP-TO-DATE
+> Task :app:convertLinkedResourcesToProtoRelease
+> Task :app:shrinkReleaseRes
+> Task :app:convertShrunkResourcesToBinaryRelease
+> Task :app:optimizeReleaseResources
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_9-1790771284819.json
+
+BUILD SUCCESSFUL in 14s
+50 actionable tasks: 10 executed, 40 up-to-date
+app/build/outputs/apk/release/app-universal-release.apk 73568439
+app/build/outputs/apk/release/app-armeabi-v7a-release.apk 35343846
+app/build/outputs/apk/release/app-arm64-v8a-release.apk 46918136
