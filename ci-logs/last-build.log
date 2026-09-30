@@ -59,9 +59,9 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 [ito] Downloading TDLib from https://github.com/CodexofLost/tdlib-packed/releases/download/v1.8.67/tdlib-v1.8.67.zip ...
 [ito] Downloaded 42875342 bytes
 [ito] TDLib ready: 2 java files, ABIs=[arm64-v8a, armeabi-v7a, x86_64]
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790781574619.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_3-1790770894757.json
 
-BUILD SUCCESSFUL in 1m 12s
+BUILD SUCCESSFUL in 51s
 1 actionable task: 1 executed
 --- محتوای TDLib ---
 app/build/tdlib/jniLibs/x86_64/libcryptox.so 5032048
@@ -105,14 +105,14 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:parseDebugLocalResources
 > Task :app:processDebugMainManifest
 > Task :app:processDebugManifest
-> Task :app:preDebugUnitTestBuild UP-TO-DATE
-> Task :app:javaPreCompileDebugUnitTest
+> Task :app:processDebugManifestForPackage
 > Task :app:javaPreCompileDebug
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest FROM-CACHE
 > Task :app:mergeDebugShaders
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets
-> Task :app:processDebugManifestForPackage
 > Task :app:processDebugResources
 > Task :app:packageDebugUnitTestForUnitTest
 > Task :app:generateDebugUnitTestConfig
@@ -126,16 +126,16 @@ w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/tele
 
 > Task :app:compileDebugJavaWithJavac
 > Task :app:processDebugJavaRes
-> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:bundleDebugClassesToCompileJar
+> Task :app:bundleDebugClassesToRuntimeJar
 > Task :app:compileDebugUnitTestKotlin
 > Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
 > Task :app:processDebugUnitTestJavaRes
 > Task :app:testDebugUnitTest
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1790781637172.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_4-1790770945276.json
 
-BUILD SUCCESSFUL in 1m 24s
-29 actionable tasks: 28 executed, 1 up-to-date
+BUILD SUCCESSFUL in 1m 4s
+29 actionable tasks: 27 executed, 1 from cache, 1 up-to-date
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
 
@@ -378,9 +378,9 @@ Wrote HTML report to file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/buil
 
 2 errors, 22 warnings
 
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_5-1790781722506.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_5-1790771010389.json
 
-BUILD SUCCESSFUL in 1m
+BUILD SUCCESSFUL in 51s
 29 actionable tasks: 9 executed, 1 from cache, 19 up-to-date
 To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
 Daemon will be stopped at the end of the build 
@@ -419,8 +419,8 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:compileDebugShaders NO-SOURCE
 > Task :app:generateDebugAssets UP-TO-DATE
 > Task :app:mergeDebugAssets UP-TO-DATE
-> Task :app:compressDebugAssets
 > Task :app:desugarDebugFileDependencies
+> Task :app:compressDebugAssets
 > Task :app:dexBuilderDebug
 > Task :app:l8DexDesugarLibDebug
 > Task :app:mergeDebugGlobalSynthetics
@@ -429,8 +429,8 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:mergeDebugJniLibFolders
 > Task :app:mergeLibDexDebug
 > Task :app:mergeDebugJavaResource
-> Task :app:mergeProjectDexDebug
 > Task :app:mergeDebugNativeLibs
+> Task :app:mergeProjectDexDebug
 > Task :app:validateSigningDebug
 > Task :app:writeDebugAppMetadata
 > Task :app:writeDebugSigningConfigVersions
@@ -440,21 +440,21 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:stripDebugDebugSymbols
 Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libc++_shared.so, libcryptox.so, libface_detector_v2_jni.so, libimage_processing_util_jni.so, libsslx.so, libsurface_util_jni.so, libtdjni.so, libtensorflowlite_jni.so.
 
+> Task :app:mergeReleaseNativeLibs
 > Task :app:mergeReleaseArtProfile
 > Task :app:buildKotlinToolingMetadata
-> Task :app:mergeReleaseNativeLibs
-> Task :app:expandReleaseL8ArtProfileWildcards
-> Task :app:generateReleaseBuildConfig
-> Task :app:checkReleaseAarMetadata
 
 > Task :app:stripReleaseDebugSymbols
 Unable to strip the following libraries, packaging them as they are: libandroidx.graphics.path.so, libc++_shared.so, libcryptox.so, libface_detector_v2_jni.so, libimage_processing_util_jni.so, libsslx.so, libsurface_util_jni.so, libtdjni.so, libtensorflowlite_jni.so.
 
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :app:generateReleaseBuildConfig
 > Task :app:checkReleaseDuplicateClasses
 > Task :app:generateReleaseResValues FROM-CACHE
-> Task :app:extractReleaseNativeSymbolTables
+> Task :app:checkReleaseAarMetadata
+> Task :app:expandReleaseL8ArtProfileWildcards
 > Task :app:mapReleaseSourceSetPaths
-> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
 > Task :app:generateReleaseResources
 > Task :app:packageReleaseResources
 > Task :app:parseReleaseLocalResources FROM-CACHE
@@ -472,12 +472,12 @@ Unable to strip the following libraries, packaging them as they are: libandroidx
 > Task :app:processReleaseManifestForPackage
 > Task :app:extractReleaseVersionControlInfo
 > Task :app:collectReleaseDependencies
+> Task :app:compressReleaseAssets
 > Task :app:sdkReleaseDependencyData
 > Task :app:validateSigningRelease
 > Task :app:writeReleaseAppMetadata
 > Task :app:writeReleaseSigningConfigVersions
 > Task :app:mergeReleaseResources
-> Task :app:compressReleaseAssets
 > Task :app:processReleaseResources
 > Task :app:convertLinkedResourcesToProtoRelease
 > Task :app:mergeExtDexDebug
@@ -506,9 +506,9 @@ w: file:///home/runner/work/Ito_TELEGRAM/Ito_TELEGRAM/app/src/main/java/ito/tele
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_7-1790781783791.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_7-1790771062829.json
 
-BUILD SUCCESSFUL in 3m 34s
+BUILD SUCCESSFUL in 3m 25s
 88 actionable tasks: 62 executed, 4 from cache, 22 up-to-date
 app/build/outputs/apk/debug/app-armeabi-v7a-debug.apk 55113939
 app/build/outputs/apk/debug/app-x86_64-debug.apk 72270314
@@ -586,9 +586,9 @@ or from Android Studio, click: `Refactor` > `Migrate BuildConfig to Gradle Build
 > Task :app:packageRelease
 > Task :app:createReleaseApkListingFileRedirect
 > Task :app:assembleRelease
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_9-1790782016778.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/__run_9-1790771284819.json
 
-BUILD SUCCESSFUL in 15s
+BUILD SUCCESSFUL in 14s
 50 actionable tasks: 10 executed, 40 up-to-date
 app/build/outputs/apk/release/app-universal-release.apk 73568439
 app/build/outputs/apk/release/app-armeabi-v7a-release.apk 35343846
