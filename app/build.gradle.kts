@@ -31,8 +31,17 @@ val tdlibUrls: List<String> = providers.environmentVariable("TDLIB_ZIP_URL").orN
         "https://core.telegram.org/tdlib/tdlib.zip",
     )
 
-/** فقط این معماری‌ها بسته‌بندی می‌شوند تا APK بی‌خود چاق نشود. */
-val wantedAbis = setOf("arm64-v8a", "armeabi-v7a", "x86_64")
+/**
+ * معماری‌هایی که بسته‌بندی می‌شوند.
+ * پیش‌فرض هر سه‌تاست؛ با `-PitoAbis=arm64-v8a,armeabi-v7a` می‌شود محدودش کرد تا
+ * APKِ یونیورسالِ «همه‌ی گوشی‌ها» زیر صد مگابایت بماند.
+ */
+val itoAbis: List<String> = (project.findProperty("itoAbis") as String?)
+    ?.split(",")
+    ?.map { it.trim() }
+    ?.filter { it.isNotEmpty() }
+    ?: listOf("arm64-v8a", "armeabi-v7a", "x86_64")
+val wantedAbis = itoAbis.toSet()
 val skipTdlib = providers.environmentVariable("ITO_SKIP_TDLIB").getOrElse("0") == "1"
 
 val fetchTdlib = tasks.register("fetchTdlib") {
@@ -131,7 +140,7 @@ android {
         abi {
             isEnable = true
             reset()
-            include("arm64-v8a", "armeabi-v7a", "x86_64")
+            include(*itoAbis.toTypedArray())
             isUniversalApk = true
         }
     }

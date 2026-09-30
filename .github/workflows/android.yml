@@ -144,6 +144,16 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
+      # APKِ «همه‌ی گوشی‌ها»: یک فایل با هر دو معماری ARM، بدون x86_64 تا زیر
+      # سقف صد مگابایتیِ گیت‌هاب بماند. عملاً هر گوشی اندرویدیِ واقعی را پوشش می‌دهد.
+      - name: ساخت APK همه‌گوشی
+        if: ${{ success() && ((github.event_name == 'workflow_dispatch' && inputs.commit_apk) || contains(github.event.head_commit.message, '[apk]')) }}
+        run: |
+          set -o pipefail
+          gradle :app:assembleRelease -PitoAbis=arm64-v8a,armeabi-v7a \
+            --no-daemon --stacktrace 2>&1 | tee -a ci-logs/build.log | tail -5
+          find app/build/outputs/apk/release -name '*.apk' -printf '%p %s\n' | tee -a ci-logs/build.log
+
       # ---- لاگ را داخل خود مخزن می‌گذاریم، چون دانلود لاگ اکشن از همه‌جا ممکن نیست
       - name: ثبت لاگ بیلد در مخزن
         if: always()
@@ -175,21 +185,31 @@ jobs:
           set -e
           mkdir -p dist
           rm -f dist/*.apk
-          ARM64=$(find app/build/outputs/apk/release -name '*arm64*.apk' | head -1)
-          ANY=$(find app/build/outputs/apk/release -name '*.apk' | head -1)
-          cp "${ARM64:-$ANY}" dist/ito-telegram-arm64-v8a-release.apk
-          if [ "${{ inputs.apk_abi }}" = "all" ] || echo "${{ github.event.head_commit.message }}" | grep -q '\[apk-all\]'; then
-            ARM32=$(find app/build/outputs/apk/release -name '*armeabi*.apk' | head -1)
-            [ -n "$ARM32" ] && cp "$ARM32" dist/ito-telegram-armeabi-v7a-release.apk || true
+          UNI=$(find app/build/outputs/apk/release -name '*universal*.apk' | head -1)
+          if [ -z "$UNI" ]; then
+            echo "::error::APK یونیورسال ساخته نشد"
+            exit 1
           fi
+          SIZE=$(stat -c%s "$UNI")
+          echo "اندازه‌ی یونیورسال: $SIZE بایت"
+          if [ "$SIZE" -gt 99000000 ]; then
+            echo "::error::APK از سقف صد مگابایتیِ گیت‌هاب رد شد"
+            exit 1
+          fi
+          cp "$UNI" dist/ito-telegram-all-phones.apk
           {
             echo "# APK ایتو"
             echo
             echo "ساخته‌شده در اجرای #${GITHUB_RUN_NUMBER} از کامیت ${GITHUB_SHA}"
             echo
-            for f in dist/*.apk; do
-              echo "- \`$(basename "$f")\` — $(du -h "$f" | cut -f1) — sha256 \`$(sha256sum "$f" | cut -c1-16)…\`"
-            done
+            echo "| فایل | اندازه | معماری | اندروید |"
+            echo "|---|---|---|---|"
+            echo "| \`ito-telegram-all-phones.apk\` | $(du -h dist/ito-telegram-all-phones.apk | cut -f1) | arm64-v8a + armeabi-v7a | ۷ به بالا |"
+            echo
+            echo "sha256: \`$(sha256sum dist/ito-telegram-all-phones.apk | cut -d' ' -f1)\`"
+            echo
+            echo "یک فایل برای همه‌ی گوشی‌ها؛ هم ۶۴بیتی هم ۳۲بیتی. کافی است نصبش کنی،"
+            echo "شماره بزنی و کد را کپی کنی — بقیه‌اش خودکار است."
             echo
             echo "امضا: کلید یک‌بارمصرفِ همین اجرا. برای به‌روزرسانیِ روی‌هم، کلید خودتان را در Secrets بگذارید."
           } > dist/README.md
@@ -198,8 +218,11 @@ jobs:
           git config user.email "actions@github.com"
           git add -f dist
           git commit -m "build: APK ایتو از اجرای ${GITHUB_RUN_NUMBER} [skip ci]" || echo "بدون تغییر"
-          git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
-          git push origin HEAD:"${GITHUB_REF_NAME}"
+          for i in 1 2 3; do
+            git pull --rebase -X ours origin "${GITHUB_REF_NAME}" || true
+            git push origin HEAD:"${GITHUB_REF_NAME}" && break
+            sleep 10
+          done
 
   smoke:
     name: تست اجرا روی شبیه‌ساز

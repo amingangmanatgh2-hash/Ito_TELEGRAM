@@ -53,7 +53,8 @@ fun SettingsScreen(nav: NavController) {
 
         SectionCard(
             title = "اتصال به تلگرام",
-            subtitle = "api_id و api_hash را از my.telegram.org بگیر. فقط روی همین دستگاه ذخیره می‌شود.",
+            subtitle = "اختیاری است: برنامه کلیدِ داخلی دارد و بدون این هم وارد می‌شوی. " +
+                "اگر کلید شخصی از my.telegram.org داری، اینجا بگذار تا سهمیه‌ات جدا باشد.",
         ) {
             OutlinedTextField(
                 value = apiId,

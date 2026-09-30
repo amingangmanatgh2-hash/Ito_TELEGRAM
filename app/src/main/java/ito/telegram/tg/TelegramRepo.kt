@@ -31,15 +31,27 @@ object TelegramRepo {
             current.stop()
         } catch (_: Throwable) {
         }
-        val apiId = prefs.getString(Prefs.API_ID).trim().toIntOrNull() ?: 0
-        val apiHash = prefs.getString(Prefs.API_HASH).trim()
+        // دیگر لازم نیست کاربر کلید بسازد: یک کلید داخلی همیشه هست.
+        val key = ApiKeys.current(prefs)
         val gw: TelegramGateway = when {
             !Td.available -> DemoGateway("هسته‌ی نیتیو TDLib در این بیلد موجود نیست")
-            apiId <= 0 || apiHash.isEmpty() -> DemoGateway("api_id / api_hash وارد نشده")
-            else -> TdLibGateway(appContext)
+            else -> TdLibGateway(appContext) { onApiKeyRejected() }
         }
         _gateway.value = gw
-        gw.start(apiId, apiHash)
+        gw.start(key.id, key.hash)
+    }
+
+    /** کلیدِ فعلی‌ای که داریم با آن به تلگرام وصل می‌شویم. */
+    fun activeKey(): ApiKeys.Key = ApiKeys.current(prefs)
+
+    /**
+     * تلگرام گفت این api_id مشکل دارد. می‌رویم سراغ کلید بعدی و بی‌سروصدا
+     * دوباره وصل می‌شویم؛ کاربر فقط یک لحظه «در حال اتصال» می‌بیند.
+     */
+    private fun onApiKeyRejected() {
+        if (ApiKeys.rotate(prefs)) {
+            restart()
+        }
     }
 
     /** متن خروجی از پایپ‌لاینِ «روی پیام ارسالی» رد می‌شود. */

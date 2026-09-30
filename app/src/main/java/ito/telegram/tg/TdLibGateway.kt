@@ -11,7 +11,11 @@ import java.util.concurrent.ConcurrentHashMap
  * گیت‌وی واقعی روی TDLib. همه‌ی تماس‌ها بازتابی است (به [Td] نگاه کنید) و همه‌چیز
  * داخل try/catch است: هیچ پیام عجیبی از سرور نباید اپ را بترکاند.
  */
-class TdLibGateway(private val context: Context) : TelegramGateway {
+class TdLibGateway(
+    private val context: Context,
+    /** وقتی تلگرام می‌گوید این api_id قبول نیست، مخزن کلید بعدی را امتحان می‌کند. */
+    private val onApiKeyRejected: () -> Unit = {},
+) : TelegramGateway {
 
     override val kind = "tdlib"
 
@@ -37,6 +41,38 @@ class TdLibGateway(private val context: Context) : TelegramGateway {
         _log.value = (_log.value + ("• " + s)).takeLast(300)
     }
 
+    /**
+     * هر خطای سرور از اینجا رد می‌شود. اگر مشکل از کلید API باشد، به‌جای
+     * نشان‌دادن یک پیام نامفهوم به کاربر، خودمان کلید را عوض می‌کنیم.
+     */
+    private fun onError(res: Any?): Boolean {
+        if (Td.simpleName(res) != "Error") return false
+        val msg = Td.str(res, "message")
+        logLine("خطا: $msg")
+        if (ApiKeys.isApiKeyProblem(msg)) {
+            _auth.value = AuthState.Booting
+            logLine("کلید API قبول نشد؛ سراغ کلید بعدی می‌رویم")
+            onApiKeyRejected()
+        } else {
+            _auth.value = AuthState.Failed(persianError(msg))
+        }
+        return true
+    }
+
+    /** پیام‌های خشکِ سرور را به فارسیِ قابل‌فهم ترجمه می‌کنیم. */
+    private fun persianError(raw: String): String = when {
+        raw.contains("PHONE_NUMBER_INVALID") -> "شماره اشتباه است. با کد کشور بنویس، مثل +989121234567"
+        raw.contains("PHONE_CODE_INVALID") -> "کد اشتباه است."
+        raw.contains("PHONE_CODE_EXPIRED") -> "کد منقضی شد؛ دوباره درخواست بده."
+        raw.contains("PASSWORD_HASH_INVALID") -> "رمز دومرحله‌ای اشتباه است."
+        raw.contains("PHONE_NUMBER_BANNED") -> "این شماره از طرف تلگرام مسدود شده."
+        raw.contains("FLOOD_WAIT") -> {
+            val sec = Regex("[0-9]+").find(raw)?.value?.toIntOrNull() ?: 0
+            "تلگرام گفت کمی صبر کن: حدود ${if (sec > 60) "${sec / 60} دقیقه" else "$sec ثانیه"}"
+        }
+        else -> raw
+    }
+
     override fun start(apiId: Int, apiHash: String) {
         this.apiId = apiId
         this.apiHash = apiHash
@@ -46,7 +82,7 @@ class TdLibGateway(private val context: Context) : TelegramGateway {
             return
         }
         if (apiId <= 0 || apiHash.isBlank()) {
-            _auth.value = AuthState.Offline("api_id / api_hash وارد نشده")
+            _auth.value = AuthState.Offline("کلید API در دسترس نیست")
             logLine("کلید API خالی است")
             return
         }
@@ -160,9 +196,7 @@ class TdLibGateway(private val context: Context) : TelegramGateway {
         Td.set(holder, "applicationVersion", "Ito 1.0")
         Td.set(holder, "enableStorageOptimizer", true)
         Td.set(holder, "ignoreFileNames", false)
-        Td.send(client, q) { res ->
-            if (Td.simpleName(res) == "Error") logLine("خطای پارامترها: " + Td.str(res, "message"))
-        }
+        Td.send(client, q) { res -> onError(res) }
     }
 
     private fun loadChats() {
@@ -251,25 +285,19 @@ class TdLibGateway(private val context: Context) : TelegramGateway {
         val q = Td.new("SetAuthenticationPhoneNumber")
         Td.set(q, "phoneNumber", phone)
         Td.set(q, "settings", Td.new("PhoneNumberAuthenticationSettings"))
-        Td.send(client, q) { res ->
-            if (Td.simpleName(res) == "Error") _auth.value = AuthState.Failed(Td.str(res, "message"))
-        }
+        Td.send(client, q) { res -> onError(res) }
     }
 
     override fun submitCode(code: String) {
         val q = Td.new("CheckAuthenticationCode")
         Td.set(q, "code", code)
-        Td.send(client, q) { res ->
-            if (Td.simpleName(res) == "Error") _auth.value = AuthState.Failed(Td.str(res, "message"))
-        }
+        Td.send(client, q) { res -> onError(res) }
     }
 
     override fun submitPassword(password: String) {
         val q = Td.new("CheckAuthenticationPassword")
         Td.set(q, "password", password)
-        Td.send(client, q) { res ->
-            if (Td.simpleName(res) == "Error") _auth.value = AuthState.Failed(Td.str(res, "message"))
-        }
+        Td.send(client, q) { res -> onError(res) }
     }
 
     override fun openChat(chatId: Long) {

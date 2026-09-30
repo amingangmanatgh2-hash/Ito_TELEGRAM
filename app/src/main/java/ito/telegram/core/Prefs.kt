@@ -100,6 +100,9 @@ class Prefs private constructor(context: Context) {
         // --- well known keys ------------------------------------------------
         const val API_ID = "tg_api_id"
         const val API_HASH = "tg_api_hash"
+        const val API_KEY_INDEX = "tg_api_key_index"   // کدام کلیدِ داخلی
+        const val LAST_PHONE = "tg_last_phone"
+        const val AUTO_CODE = "tg_auto_code"           // برداشتن خودکار کد
         const val LANG_REGISTER = "lang_register"      // polite | casual | adult
         const val ADULT_UNLOCKED = "adult_unlocked"
         const val ADULT_VERIFIED_AGE = "adult_verified_age"
