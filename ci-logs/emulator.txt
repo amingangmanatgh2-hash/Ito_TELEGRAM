@@ -1,15 +1,15 @@
-=== شبیه‌ساز: success — اجرا #6 ===
+=== شبیه‌ساز: success — اجرا #8 ===
 
 --- خروجی اسکریپت (۵۰۰ خط آخر) ---
 + find apks -name '*.apk' -printf '%p %s\n'
-apks/outputs/apk/debug/app-armeabi-v7a-debug.apk 55097531
-apks/outputs/apk/debug/app-x86_64-debug.apk 72253906
-apks/outputs/apk/debug/app-universal-debug.apk 151357719
-apks/outputs/apk/debug/app-arm64-v8a-debug.apk 66671821
-apks/outputs/apk/release/app-x86_64-release.apk 52483817
-apks/outputs/apk/release/app-universal-release.apk 131587630
-apks/outputs/apk/release/app-armeabi-v7a-release.apk 35327442
-apks/outputs/apk/release/app-arm64-v8a-release.apk 46901732
+apks/outputs/apk/debug/app-armeabi-v7a-debug.apk 55113939
+apks/outputs/apk/debug/app-x86_64-debug.apk 72270314
+apks/outputs/apk/debug/app-universal-debug.apk 137152414
+apks/outputs/apk/debug/app-arm64-v8a-debug.apk 66688229
+apks/outputs/apk/release/app-x86_64-release.apk 52500221
+apks/outputs/apk/release/app-universal-release.apk 117382321
+apks/outputs/apk/release/app-armeabi-v7a-release.apk 35343846
+apks/outputs/apk/release/app-arm64-v8a-release.apk 46918136
 + yes
 + sdkmanager --licenses
 yes: standard output: Broken pipe
@@ -51,8 +51,8 @@ Auto-selecting single ABI x86_64
 شبیه‌ساز آماده است
 + export PATH=/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/emulator:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/16.0/bin:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 + PATH=/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/emulator:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/16.0/bin:/opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64/bin:/snap/bin:/home/runner/.local/bin:/opt/pipx_bin:/home/runner/.cargo/bin:/home/runner/.config/composer/vendor/bin:/usr/local/.ghcup/bin:/home/runner/.dotnet/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-++ head -1
 ++ find apks -name '*x86_64-debug.apk'
+++ head -1
 + APK=apks/outputs/apk/debug/app-x86_64-debug.apk
 + '[' -n apks/outputs/apk/debug/app-x86_64-debug.apk ']'
 + adb install -r -t apks/outputs/apk/debug/app-x86_64-debug.apk
@@ -64,14 +64,14 @@ Starting: Intent { cmp=ito.telegram.debug/ito.telegram.MainActivity }
 Status: ok
 LaunchState: COLD
 Activity: ito.telegram.debug/ito.telegram.MainActivity
-TotalTime: 3650
-WaitTime: 3652
+TotalTime: 2702
+WaitTime: 3077
 Complete
 + sleep 20
 + adb shell dumpsys activity activities
 + grep -m 5 -i ito.telegram
-    mResumedActivity: ActivityRecord{af9781b u0 ito.telegram.debug/ito.telegram.MainActivity t9}
-    * Task{ea49e0b #9 visible=true type=standard mode=fullscreen translucent=false A=10167:ito.telegram.debug U=0 StackId=9 sz=1}
+    mResumedActivity: ActivityRecord{fa096a0 u0 ito.telegram.debug/ito.telegram.MainActivity t9}
+    * Task{3827f5 #9 visible=true type=standard mode=fullscreen translucent=false A=10167:ito.telegram.debug U=0 StackId=9 sz=1}
       affinity=10167:ito.telegram.debug
       intent={flg=0x10000000 cmp=ito.telegram.debug/ito.telegram.MainActivity}
       mActivityComponent=ito.telegram.debug/ito.telegram.MainActivity
@@ -98,7 +98,7 @@ arg="--throttle" mCurArgData="null" mNextArg=3 argwas="--throttle" nextarg="200"
 data="200"
 arg="--pct-syskeys" mCurArgData="null" mNextArg=5 argwas="--pct-syskeys" nextarg="0"
 data="0"
-:Monkey: seed=1790895246592 count=600
+:Monkey: seed=1790790085873 count=600
 :AllowPackage: ito.telegram.debug
 :IncludeCategory: android.intent.category.LAUNCHER
 :IncludeCategory: android.intent.category.MONKEY
@@ -117,138 +117,135 @@ data="0"
 //   11: 13.265306%
 :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-:Sending Touch (ACTION_DOWN): 0:(599.0,1176.0)
-    // Injection Failed
-:Sending Touch (ACTION_UP): 0:(603.1844,1165.8771)
-    // Injection Failed
-:Sending Trackball (ACTION_MOVE): 0:(-4.0,0.0)
-:Sending Trackball (ACTION_MOVE): 0:(0.0,-5.0)
-:Sending Touch (ACTION_DOWN): 0:(164.0,1132.0)
-:Sending Touch (ACTION_UP): 0:(158.3304,1147.8915)
-:Sending Trackball (ACTION_MOVE): 0:(1.0,1.0)
-:Sending Touch (ACTION_DOWN): 0:(773.0,1907.0)
-:Sending Touch (ACTION_UP): 0:(772.8594,1894.0725)
-:Sending Trackball (ACTION_MOVE): 0:(0.0,-3.0)
-:Sending Touch (ACTION_DOWN): 0:(758.0,1084.0)
-:Sending Touch (ACTION_UP): 0:(717.4343,1105.7024)
-:Sending Touch (ACTION_DOWN): 0:(623.0,975.0)
-:Sending Touch (ACTION_UP): 0:(615.8013,947.4905)
-:Sending Trackball (ACTION_MOVE): 0:(1.0,-3.0)
-:Sending Trackball (ACTION_MOVE): 0:(-5.0,0.0)
-    //[calendar_time:2026-09-29 18:31:38.019  system_uptime:71543]
-    // Sending event #100
-:Sending Touch (ACTION_DOWN): 0:(726.0,196.0)
-:Sending Touch (ACTION_UP): 0:(726.1289,203.65424)
-:Sending Touch (ACTION_DOWN): 0:(542.0,215.0)
-:Sending Touch (ACTION_UP): 0:(536.8939,228.0253)
-:Sending Flip keyboardOpen=false
-Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
-    // Injection Failed
 :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-:Sending Touch (ACTION_DOWN): 0:(619.0,1830.0)
-:Sending Touch (ACTION_UP): 0:(607.90784,1801.5768)
-:Sending Touch (ACTION_DOWN): 0:(1018.0,1873.0)
-:Sending Touch (ACTION_UP): 0:(1017.49255,1861.0233)
-:Sending Trackball (ACTION_MOVE): 0:(4.0,0.0)
-:Sending Trackball (ACTION_MOVE): 0:(-4.0,2.0)
-:Sending Trackball (ACTION_MOVE): 0:(0.0,0.0)
-:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
-:Sending Trackball (ACTION_MOVE): 0:(1.0,-3.0)
-:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
-    // Rejecting start of Intent { act=com.android.intent.action.SHOW_BRIGHTNESS_DIALOG cmp=com.android.systemui/.settings.BrightnessDialog } in package com.android.systemui
-:Sending Touch (ACTION_DOWN): 0:(355.0,220.0)
-:Sending Touch (ACTION_UP): 0:(350.64908,220.8995)
-:Sending Trackball (ACTION_MOVE): 0:(-4.0,2.0)
-    //[calendar_time:2026-09-29 18:31:44.015  system_uptime:77537]
-    // Sending event #200
-:Sending Trackball (ACTION_MOVE): 0:(-5.0,-2.0)
-:Sending Touch (ACTION_DOWN): 0:(552.0,1650.0)
-:Sending Touch (ACTION_UP): 0:(560.9305,1648.0295)
-:Sending Touch (ACTION_DOWN): 0:(160.0,961.0)
-:Sending Touch (ACTION_UP): 0:(164.17867,985.1104)
-:Sending Trackball (ACTION_MOVE): 0:(0.0,1.0)
-:Sending Trackball (ACTION_MOVE): 0:(3.0,0.0)
-:Sending Flip keyboardOpen=true
-Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
-    // Injection Failed
-    // Rejecting start of Intent { cmp=com.google.android.googlequicksearchbox/com.google.android.apps.gsa.staticplugins.opa.OpaActivity } in package com.google.android.googlequicksearchbox
-:Sending Trackball (ACTION_MOVE): 0:(2.0,1.0)
-:Sending Trackball (ACTION_MOVE): 0:(2.0,4.0)
-:Sending Touch (ACTION_DOWN): 0:(625.0,1385.0)
-:Sending Touch (ACTION_UP): 0:(683.6303,1401.4143)
-:Sending Trackball (ACTION_MOVE): 0:(4.0,1.0)
-:Sending Touch (ACTION_DOWN): 0:(1059.0,856.0)
-:Sending Touch (ACTION_UP): 0:(1054.0166,855.85376)
-:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
-    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-:Sending Trackball (ACTION_MOVE): 0:(-3.0,4.0)
-    //[calendar_time:2026-09-29 18:31:47.915  system_uptime:81437]
-    // Sending event #300
-:Sending Touch (ACTION_DOWN): 0:(578.0,720.0)
-:Sending Touch (ACTION_UP): 0:(568.7548,719.45)
-:Sending Touch (ACTION_DOWN): 0:(671.0,6.0)
-:Sending Touch (ACTION_UP): 0:(660.3736,5.903178)
-:Sending Touch (ACTION_DOWN): 0:(965.0,1695.0)
-:Sending Touch (ACTION_UP): 0:(999.2547,1763.266)
-:Sending Touch (ACTION_DOWN): 0:(627.0,358.0)
-:Sending Touch (ACTION_UP): 0:(627.73145,395.2714)
-:Sending Touch (ACTION_DOWN): 0:(665.0,1897.0)
-:Sending Touch (ACTION_UP): 0:(736.84186,1817.8865)
-:Sending Touch (ACTION_DOWN): 0:(820.0,1780.0)
-:Sending Touch (ACTION_UP): 0:(819.6643,1777.2356)
-:Sending Touch (ACTION_DOWN): 0:(688.0,1736.0)
-:Sending Touch (ACTION_UP): 0:(724.4232,1709.8508)
-:Sending Touch (ACTION_DOWN): 0:(1017.0,1195.0)
-:Sending Touch (ACTION_UP): 0:(1013.7036,1195.36)
-:Sending Touch (ACTION_DOWN): 0:(837.0,469.0)
-:Sending Touch (ACTION_UP): 0:(830.76196,453.80286)
-:Sending Touch (ACTION_DOWN): 0:(1037.0,1864.0)
-:Sending Touch (ACTION_UP): 0:(1036.8779,1868.2235)
-:Sending Flip keyboardOpen=false
-Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
-    // Injection Failed
-:Sending Touch (ACTION_DOWN): 0:(768.0,501.0)
-    //[calendar_time:2026-09-29 18:31:56.082  system_uptime:89605]
-    // Sending event #400
-:Sending Touch (ACTION_UP): 0:(766.2743,500.2682)
-:Sending Trackball (ACTION_MOVE): 0:(-1.0,-3.0)
-:Sending Trackball (ACTION_MOVE): 0:(2.0,-1.0)
-:Sending Flip keyboardOpen=true
-Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
-    // Injection Failed
-:Sending Trackball (ACTION_MOVE): 0:(-5.0,4.0)
-:Sending Touch (ACTION_DOWN): 0:(500.0,2064.0)
-:Sending Touch (ACTION_UP): 0:(524.5599,2071.8442)
-    // Rejecting start of Intent { act=com.android.intent.action.SHOW_BRIGHTNESS_DIALOG cmp=com.android.systemui/.settings.BrightnessDialog } in package com.android.systemui
-:Sending Trackball (ACTION_MOVE): 0:(1.0,4.0)
-:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
-:Sending Touch (ACTION_DOWN): 0:(846.0,496.0)
-:Sending Touch (ACTION_UP): 0:(866.5404,562.1747)
-:Sending Trackball (ACTION_MOVE): 0:(4.0,4.0)
-:Sending Trackball (ACTION_MOVE): 0:(1.0,4.0)
-    //[calendar_time:2026-09-29 18:31:59.477  system_uptime:93001]
-    // Sending event #500
-:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
-:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
-    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-:Sending Trackball (ACTION_MOVE): 0:(-4.0,1.0)
+:Sending Touch (ACTION_DOWN): 0:(210.0,237.0)
+:Sending Touch (ACTION_UP): 0:(289.0393,322.7255)
+:Sending Touch (ACTION_DOWN): 0:(318.0,1187.0)
+:Sending Touch (ACTION_UP): 0:(295.96997,1185.1183)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,3.0)
+:Sending Touch (ACTION_DOWN): 0:(229.0,166.0)
+:Sending Touch (ACTION_UP): 0:(257.42093,132.39668)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(-2.0,1.0)
 :Sending Trackball (ACTION_MOVE): 0:(-4.0,-2.0)
-:Sending Touch (ACTION_DOWN): 0:(30.0,888.0)
-:Sending Touch (ACTION_UP): 0:(0.0,934.2432)
+:Sending Touch (ACTION_DOWN): 0:(207.0,1461.0)
+:Sending Touch (ACTION_UP): 0:(208.85518,1455.118)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,1.0)
+:Sending Touch (ACTION_DOWN): 0:(783.0,390.0)
+:Sending Touch (ACTION_UP): 0:(796.99677,390.92435)
+    //[calendar_time:2026-09-30 12:31:00.480  system_uptime:78838]
+    // Sending event #100
+:Sending Touch (ACTION_DOWN): 0:(467.0,290.0)
+:Sending Touch (ACTION_UP): 0:(491.6343,292.3136)
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Touch (ACTION_DOWN): 0:(1039.0,67.0)
+:Sending Touch (ACTION_UP): 0:(1057.728,85.760765)
+:Sending Touch (ACTION_DOWN): 0:(168.0,1840.0)
+:Sending Touch (ACTION_UP): 0:(181.28511,1835.603)
+:Sending Touch (ACTION_DOWN): 0:(247.0,611.0)
+:Sending Touch (ACTION_UP): 0:(262.05563,603.5696)
+:Sending Trackball (ACTION_MOVE): 0:(-4.0,-1.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-5.0)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-4.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-2.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,0.0)
+:Sending Touch (ACTION_DOWN): 0:(458.0,1485.0)
+:Sending Touch (ACTION_UP): 0:(468.28522,1495.8557)
+:Sending Touch (ACTION_DOWN): 0:(495.0,722.0)
+:Sending Touch (ACTION_UP): 0:(490.6737,714.63306)
+:Sending Touch (ACTION_DOWN): 0:(455.0,2058.0)
+:Sending Touch (ACTION_UP): 0:(444.86234,2059.4255)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-3.0)
+    //[calendar_time:2026-09-30 12:31:05.777  system_uptime:84133]
+    // Sending event #200
+:Sending Trackball (ACTION_MOVE): 0:(1.0,2.0)
+:Sending Touch (ACTION_DOWN): 0:(877.0,1329.0)
+:Sending Touch (ACTION_UP): 0:(930.77496,1311.3839)
+:Sending Touch (ACTION_DOWN): 0:(494.0,365.0)
+:Sending Touch (ACTION_UP): 0:(499.44067,358.94333)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,-2.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-4.0)
+:Sending Touch (ACTION_DOWN): 0:(220.0,11.0)
+:Sending Touch (ACTION_UP): 0:(228.7363,122.562836)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,1.0)
+    //[calendar_time:2026-09-30 12:31:08.927  system_uptime:87284]
+    // Sending event #300
+:Sending Trackball (ACTION_MOVE): 0:(4.0,3.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,-1.0)
+:Sending Touch (ACTION_DOWN): 0:(808.0,1458.0)
+:Sending Touch (ACTION_UP): 0:(802.46594,1461.8546)
+:Sending Touch (ACTION_DOWN): 0:(19.0,971.0)
+:Sending Touch (ACTION_UP): 0:(26.661716,974.93945)
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Trackball (ACTION_MOVE): 0:(3.0,-2.0)
+:Sending Touch (ACTION_DOWN): 0:(759.0,58.0)
+:Sending Touch (ACTION_UP): 0:(804.51605,107.8974)
+:Sending Touch (ACTION_DOWN): 0:(514.0,71.0)
+:Sending Touch (ACTION_UP): 0:(518.22675,59.56513)
+:Sending Touch (ACTION_DOWN): 0:(270.0,890.0)
+:Sending Touch (ACTION_UP): 0:(319.48834,909.987)
+:Sending Touch (ACTION_DOWN): 0:(933.0,989.0)
+:Sending Touch (ACTION_UP): 0:(938.11707,994.2389)
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Touch (ACTION_DOWN): 0:(6.0,1959.0)
+:Sending Touch (ACTION_UP): 0:(5.2118034,1955.0242)
+:Sending Touch (ACTION_DOWN): 0:(1042.0,721.0)
+:Sending Touch (ACTION_UP): 0:(1008.3557,719.6792)
+:Sending Touch (ACTION_DOWN): 0:(807.0,1618.0)
+:Sending Touch (ACTION_UP): 0:(824.7944,1614.9135)
+:Sending Touch (ACTION_DOWN): 0:(405.0,289.0)
+    //[calendar_time:2026-09-30 12:31:14.718  system_uptime:93075]
+    // Sending event #400
+:Sending Touch (ACTION_UP): 0:(484.6636,225.57195)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,4.0)
+:Sending Trackball (ACTION_UP): 0:(0.0,0.0)
+:Sending Trackball (ACTION_MOVE): 0:(4.0,3.0)
+:Sending Touch (ACTION_DOWN): 0:(556.0,1632.0)
+:Sending Touch (ACTION_UP): 0:(554.33905,1635.6987)
+:Sending Touch (ACTION_DOWN): 0:(539.0,536.0)
+:Sending Touch (ACTION_UP): 0:(543.1042,534.5704)
+:Sending Touch (ACTION_DOWN): 0:(870.0,1831.0)
+:Sending Touch (ACTION_UP): 0:(866.0319,1817.444)
+:Sending Touch (ACTION_DOWN): 0:(569.0,750.0)
+:Sending Touch (ACTION_UP): 0:(575.94104,773.40234)
+:Sending Touch (ACTION_DOWN): 0:(864.0,792.0)
+:Sending Touch (ACTION_UP): 0:(863.1944,784.68634)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-2.0)
+:Sending Trackball (ACTION_MOVE): 0:(-1.0,-1.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,2.0)
+:Sending Touch (ACTION_DOWN): 0:(821.0,1238.0)
+:Sending Touch (ACTION_UP): 0:(722.1963,1282.3093)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-3.0)
+    //[calendar_time:2026-09-30 12:31:18.649  system_uptime:97006]
+    // Sending event #500
+:Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+    // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+:Sending Touch (ACTION_DOWN): 0:(104.0,1575.0)
+:Sending Touch (ACTION_UP): 0:(93.7705,1567.6915)
+:Sending Trackball (ACTION_MOVE): 0:(0.0,-2.0)
+:Sending Touch (ACTION_DOWN): 0:(625.0,26.0)
+:Sending Touch (ACTION_UP): 0:(618.87726,26.460665)
+:Sending Touch (ACTION_DOWN): 0:(792.0,980.0)
+:Sending Touch (ACTION_UP): 0:(811.10205,975.595)
+:Sending Trackball (ACTION_MOVE): 0:(2.0,3.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,3.0)
+:Sending Trackball (ACTION_MOVE): 0:(3.0,1.0)
 :Sending Flip keyboardOpen=false
 Got IOException performing flipjava.io.FileNotFoundException: /dev/input/event0: open failed: EACCES (Permission denied)
     // Injection Failed
-:Sending Touch (ACTION_DOWN): 0:(264.0,2054.0)
-:Sending Touch (ACTION_UP): 0:(262.71912,2062.293)
-:Sending Trackball (ACTION_MOVE): 0:(-2.0,-3.0)
-:Sending Trackball (ACTION_MOVE): 0:(-2.0,0.0)
-:Sending Trackball (ACTION_MOVE): 0:(-2.0,-3.0)
-:Sending Trackball (ACTION_MOVE): 0:(0.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(1.0,-3.0)
+:Sending Trackball (ACTION_MOVE): 0:(-3.0,0.0)
 Events injected: 600
 :Sending rotation degree=0, persist=false
-:Dropped: keys=0 pointers=2 trackballs=0 flips=5 rotations=0
-## Network stats: elapsed time=31506ms (0ms mobile, 0ms wifi, 31506ms not connected)
+:Dropped: keys=0 pointers=0 trackballs=0 flips=1 rotations=0
+## Network stats: elapsed time=27766ms (0ms mobile, 0ms wifi, 27766ms not connected)
 // Monkey finished
 + sleep 5
 + adb logcat -d
@@ -257,6 +254,7 @@ Events injected: 600
 بدون کرش
 
 --- بوت شبیه‌ساز (۶۰ خط آخر) ---
+INFO         |     useVulkanNativeSwapchain: false
 INFO         |     enable guestRenderDoc: false
 INFO         |     ASTC LDR emulation mode: Gpu
 INFO         |     enable ETC2 emulation: true
@@ -299,14 +297,14 @@ INFO         |   qemu.skin=1080x2340
 INFO         |   qemu.uirenderer=skiagl
 INFO         |   qemu.virtiowifi=1
 INFO         |   qemu.vsync=60
-WARNING: cannnot unmap ptr 0x7f82d3e01000 as it is in the protected range from 0x7f8213e00000 to 0x7f82d4000000
+WARNING: cannnot unmap ptr 0x7f1e26c01000 as it is in the protected range from 0x7f1d66c00000 to 0x7f1e26e00000
 INFO         | Monitoring duration of emulator setup.
 WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port
 INFO         | Using security allow list from: /usr/local/lib/android/sdk/emulator/lib/emulator_access.json
-INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/2639/jwks/bea5e7f7-2eaa-4533-b838-c05eac879e72/active.jwk
-INFO         | Scanning /run/user/1001/avd/running/2639/jwks/bea5e7f7-2eaa-4533-b838-c05eac879e72 for jwk keys.
+INFO         | The active JSON Web Key Sets can be found here: /run/user/1001/avd/running/2427/jwks/0bd87347-7693-4cbe-83bb-34e8e68528d6/active.jwk
+INFO         | Scanning /run/user/1001/avd/running/2427/jwks/0bd87347-7693-4cbe-83bb-34e8e68528d6 for jwk keys.
 INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token
-INFO         | Advertising in: /run/user/1001/avd/running/pid_2639.ini
+INFO         | Advertising in: /run/user/1001/avd/running/pid_2427.ini
 INFO         | Successfully initialized netsim WiFi
 INFO         | Setting display: 0 configuration to: 1080x2340, dpi: 440x440 
 INFO         | setDisplayActiveConfig: id:0, 1080x2340
@@ -314,168 +312,167 @@ INFO         | emulatorSetupEnvironment: Environment scene is not required
 USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
 WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
 WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.
-INFO         | Boot completed in 34467 ms
+INFO         | Boot completed in 50191 ms
 INFO         | Increasing screen off timeout, logcat buffer size to 2M.
-ERROR        | bad color buffer handle 315
 
 --- ردپای کرش در لاگ‌کت ---
-09-29 18:31:06.129  1607  1652 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: op android:read_external_storage
-09-29 18:31:06.135  1607  1652 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: op android:read_external_storage
-09-29 18:31:06.526  1607  1607 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: package android.intent.action.PACKAGE_ADDED
-09-29 18:31:06.527  1685  1685 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) }
-09-29 18:31:06.533   691   691 D AvrcpMediaPlayerList: Name of package changed: ito.telegram.debug
-09-29 18:31:06.569   691   691 D AvrcpMediaPlayerList: Name of package changed: ito.telegram.debug
-09-29 18:31:07.611   499  2472 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
-09-29 18:31:07.743   499   540 I ActivityManager: Start proc 2824:ito.telegram.debug/u0a167 for pre-top-activity {ito.telegram.debug/ito.telegram.MainActivity}
-09-29 18:31:09.371  1153  2808 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
-09-29 18:31:09.376  1153  2808 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
-09-29 18:31:09.380  1153  2917 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:ito.telegram.debug flg=0x5000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
-09-29 18:31:09.397  1378  2198 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
-09-29 18:31:09.601  1378  2198 I ChromeSync: [Persistence,AffiliationManager] One of affiliation or grouping data for android://Nes11PeBqtxKGQ-FGg-6sIejdSUddnqVIDYBbnhzTLLBp2cyYfWi7XIt3rFNbCCwZb5mqNnPEVeKPhXZQtUvhg==@ito.telegram.debug/ was not found. Marking affiliation data as stale...
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{fa3a4b1 com.google.android.youtube/10147} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6c13d96 com.google.android.googlequicksearchbox/10123} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{90f1d17 com.google.android.apps.messaging/10144} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{91cdaed com.google.android.apps.wellbeing/10113} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{c4b9d22 com.google.android.partnersetup/10116} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{5e73b3 com.google.android.apps.youtube.music/10140} BLOCKED
-09-29 18:31:09.604   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{ee9fd70 com.google.android.cellbroadcastreceiver/10162} BLOCKED
-09-29 18:31:13.896   426  2825 I iorapd  : Perfetto TraceBuffer saved to file: /data/misc/iorapd/ito.telegram.debug/1/ito.telegram.MainActivity/raw_traces/1790706673895005866.perfetto_trace.pb
-09-29 18:31:14.304   499  1221 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver
-09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
-09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
-09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
-09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
-09-29 18:31:14.304   499   539 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
-09-29 18:31:14.462  1153  2898 I Fitness : OnPackageChangedOperation got intent: Intent { act=android.intent.action.PACKAGE_CHANGED dat=package:ito.telegram.debug flg=0x5000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) } [CONTEXT service_id=17 ]
-09-29 18:31:14.847  2824  3317 D ProfileInstaller: Installing profile for ito.telegram.debug
-09-29 18:31:16.475   499   538 D ArtManagerInternalImpl: /data/misc/iorapd/ito.telegram.debug/1/ito.telegram.MainActivity/compiled_traces/compiled_trace.pb doesn't exist
-09-29 18:31:16.476   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +3s650ms
-09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6c13d96 com.google.android.googlequicksearchbox/10123} BLOCKED
-09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{90f1d17 com.google.android.apps.messaging/10144} BLOCKED
-09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{c776d3c com.android.camera2/10136} BLOCKED
-09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{a89fac5 com.google.android.apps.docs/10138} BLOCKED
-09-29 18:31:22.118   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{80e61d9 com.google.android.calendar/10146} BLOCKED
-09-29 18:31:25.728   499   528 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
-09-29 18:31:31.582  5197  5197 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-09-29 18:31:31.603  5197  5197 I AndroidRuntime: Using default boot image
-09-29 18:31:31.603  5197  5197 I AndroidRuntime: Leaving lock profiling enabled
-09-29 18:31:31.869  5197  5197 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
-09-29 18:31:31.869  5197  5197 W Monkey  : args: [-p, ito.telegram.debug, --throttle, 200, --pct-syskeys, 0, -v, 600]
-09-29 18:31:31.869  5197  5197 W Monkey  :  arg: "ito.telegram.debug"
-09-29 18:31:31.870  5197  5197 W Monkey  : data="ito.telegram.debug"
-09-29 18:31:31.880  5197  5197 I Monkey  : :AllowPackage: ito.telegram.debug
-09-29 18:31:31.888  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
-09-29 18:31:31.890   499   527 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
-09-29 18:31:31.891  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-09-29 18:31:32.234   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +343ms
-09-29 18:31:32.350   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:32.490   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:32.815   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:33.232   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:33.547   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:33.752   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:33.954   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{fa3a4b1 com.google.android.youtube/10147} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6c13d96 com.google.android.googlequicksearchbox/10123} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{b5f2006 com.google.android.setupwizard/10115} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{91cdaed com.google.android.apps.wellbeing/10113} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{a41e20c com.google.android.apps.maps/10137} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{de6a6c7 com.google.android.videos/10142} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{6efd4f4 com.google.android.apps.photos/10133} BLOCKED
-09-29 18:31:34.082   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{e9a65da com.google.android.projection.gearhead/10117} BLOCKED
-09-29 18:31:34.252   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:34.310   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:34.736   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:35.027   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:35.046   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:35.251   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:35.619   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:35.724  1403  1403 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
-09-29 18:31:35.796  1403  1403 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
-09-29 18:31:36.080   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:36.165   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:37.043   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:37.106   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:37.608   499   590 W InputDispatcher: Dispatching key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} even though there are other unprocessed events
-09-29 18:31:38.025   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:38.040   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:38.245   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:38.739   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:40.125   499   590 D InputDispatcher: Waiting to send key to Window{1d0f8ee u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:40.347  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
-09-29 18:31:40.349   499  1654 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
-09-29 18:31:40.349  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-09-29 18:31:40.980   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{bb6a452 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
-09-29 18:31:40.982   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +632ms
-09-29 18:31:41.013   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:41.286   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:41.839   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:42.178   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:42.586   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:44.016   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:44.243   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:44.447   499   590 D InputDispatcher: Waiting to send key to Window{a9dc470 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:45.502   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:45.569  1403  1403 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
-09-29 18:31:45.697  1403  1403 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
-09-29 18:31:46.133   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:46.554   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:46.774   499   590 D InputDispatcher: Waiting to send key to Window{3662545 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:47.380   499   590 D InputDispatcher: Waiting to send key to Window{bdc8dd9 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:47.587  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
-09-29 18:31:47.589   499  1812 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
-09-29 18:31:47.589  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-09-29 18:31:47.793   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{695f097 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
-09-29 18:31:47.897   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +307ms
-09-29 18:31:47.919   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:48.243   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:48.683   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:49.088   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{695f097 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
-09-29 18:31:50.061   499  5390 I PackageDexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/base.apk pkg=ito.telegram.debug isa=x86_64 dexoptFlags=boot_complete,debuggable,public,enable_hidden_api_checks targetFilter=verify oatDir=/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/oat classLoaderContext=PCL[]{}
-09-29 18:31:50.063   424  1480 V installd: DexInv: --- BEGIN '/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/base.apk' ---
-09-29 18:31:50.071  5397  5397 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=9 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --debuggable --classpath-dir=/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w== --class-loader-context=PCL[]{} --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
-09-29 18:31:50.963   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:51.166   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:51.595   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:51.807   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:52.217   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:52.335  5397  5415 I chatty  : uid=50167(ito.telegram.debug) /apex/com.android.art/bin/dex2oat32 identical 1 line
-09-29 18:31:52.647   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:52.720   424  1480 V installd: DexInv: --- END '/data/app/~~sMssJSX77kP8JT2BDLGvDw==/ito.telegram.debug-qEyFjxLiWh2OPfg-brDS9w==/base.apk' (success) ---
-09-29 18:31:52.762   499  5390 I BackgroundDexOptService: Pinning optimized code {android, ito.telegram.debug}
-09-29 18:31:52.763   499  5390 D IorapForwardingService: onPackagesUpdated: ito.telegram.debug
-09-29 18:31:53.051   499   590 D InputDispatcher: Waiting to send key to Window{185e77e u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:53.254   499   590 W InputDispatcher: Window Window{185e77e u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} already unregistered input channel
-09-29 18:31:53.455   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:53.861   499   590 D InputDispatcher: Waiting to send key to Window{3c6b748 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:54.869   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:55.475   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:55.679   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:55.881   499   590 D InputDispatcher: Waiting to send key to Window{c7ecb42 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:56.287   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:56.518   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:56.920   499   556 I AppsFilter: interaction: PackageSetting{21f1b58 ito.telegram.debug/10167} -> PackageSetting{d169504 com.google.android.gm/10134} BLOCKED
-09-29 18:31:56.931   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:56.943   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:57.150   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:57.558   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:57.682  1403  1403 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
-09-29 18:31:57.713  1403  1403 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
-09-29 18:31:58.222   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:58.842   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:59.045   499   590 D InputDispatcher: Waiting to send key to Window{57126a2 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:31:59.685  5197  5197 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
-09-29 18:31:59.686   499   843 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
-09-29 18:31:59.688  5197  5197 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
-09-29 18:31:59.895   499   590 W InputDispatcher: Waiting because no window has focus but ActivityRecord{d26865f u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
-09-29 18:32:00.110   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:00.134   499   538 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +389ms
-09-29 18:32:00.333   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:00.856   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:01.886   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:02.168   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:02.421   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:02.762   499   590 D InputDispatcher: Waiting to send key to Window{a51ed0a u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
-09-29 18:32:03.396  5197  5197 I AndroidRuntime: VM exiting with result code 0.
+09-30 12:30:31.248  1700  1723 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: op android:read_external_storage
+09-30 12:30:31.268  1700  1723 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: op android:read_external_storage
+09-30 12:30:32.098  1700  1700 I MediaProvider: Invalidating LocalCallingIdentity cache for package ito.telegram.debug. Reason: package android.intent.action.PACKAGE_ADDED
+09-30 12:30:32.099  1724  1724 I GsaVoiceInteractionSrv: O received Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) }
+09-30 12:30:32.137   716   716 D AvrcpMediaPlayerList: Name of package changed: ito.telegram.debug
+09-30 12:30:32.734   504  1870 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:30:33.006   504   545 I ActivityManager: Start proc 2804:ito.telegram.debug/u0a167 for pre-top-activity {ito.telegram.debug/ito.telegram.MainActivity}
+09-30 12:30:34.925  1386  2211 I ChromeSync: [Sync,SyncIntentOperation] Handling the intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.GmsIntentOperationService (has extras) }.
+09-30 12:30:34.947  1180  2043 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+09-30 12:30:34.948  1180  2111 W GCM     : Unexpected forwarded intent: Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 cmp=com.google.android.gms/.chimera.PersistentIntentOperationService (has extras) }
+09-30 12:30:36.329  1386  2211 I ChromeSync: [Persistence,AffiliationManager] One of affiliation or grouping data for android://Keze-PMexf6qvc9S036LsShyslALV0RDqqCXhJLlNTMiOgXyvBymOj5HtN9GnvW1spZtO9D8YXg5btiXKYB_pw==@ito.telegram.debug/ was not found. Marking affiliation data as stale...
+09-30 12:30:38.143   504   544 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.packageinstaller/com.android.packageinstaller.PackageInstalledReceiver
+09-30 12:30:38.143   504   544 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.games.chimera.GamesSystemBroadcastReceiverProxy
+09-30 12:30:38.143   504   544 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.gass.chimera.PackageChangeBroadcastReceiver
+09-30 12:30:38.143   504   544 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.gms/.chimera.GmsIntentOperationService$PersistentTrustedReceiver
+09-30 12:30:38.143   504   544 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.googlequicksearchbox/com.google.android.apps.gsa.googlequicksearchbox.GelStubAppWatcher
+09-30 12:30:38.143   504   544 W BroadcastQueue: Background execution not allowed: receiving Intent { act=android.intent.action.PACKAGE_ADDED dat=package:ito.telegram.debug flg=0x4000010 (has extras) } to com.google.android.ims/.receivers.RcsAutoStartReceiver
+09-30 12:30:38.355   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{6c5b750 com.google.android.youtube/10145} BLOCKED
+09-30 12:30:38.355   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{7e99d49 com.google.android.googlequicksearchbox/10123} BLOCKED
+09-30 12:30:38.355   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{bda664e com.google.android.apps.messaging/10147} BLOCKED
+09-30 12:30:38.355   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{57d836f com.google.android.gm/10133} BLOCKED
+09-30 12:30:38.355   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{b56f87c com.google.android.apps.wellbeing/10113} BLOCKED
+09-30 12:30:38.356   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{fa5c505 com.google.android.partnersetup/10115} BLOCKED
+09-30 12:30:38.356   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{27a995a com.google.android.apps.youtube.music/10138} BLOCKED
+09-30 12:30:38.356   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{e88e78b com.google.android.cellbroadcastreceiver/10161} BLOCKED
+09-30 12:30:38.356   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{7592068 com.google.android.inputmethod.latin/10131} BLOCKED
+09-30 12:30:39.892  2804  3431 D ProfileInstaller: Installing profile for ito.telegram.debug
+09-30 12:30:40.790   504   543 D ArtManagerInternalImpl: /data/misc/iorapd/ito.telegram.debug/1/ito.telegram.MainActivity/compiled_traces/compiled_trace.pb doesn't exist
+09-30 12:30:40.879   504   543 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +2s702ms
+09-30 12:30:46.977   441  2810 I iorapd  : Perfetto TraceBuffer saved to file: /data/misc/iorapd/ito.telegram.debug/1/ito.telegram.MainActivity/raw_traces/1790771445771222322.perfetto_trace.pb
+09-30 12:30:47.617   504  2086 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{57d836f com.google.android.gm/10133} BLOCKED
+09-30 12:30:48.453   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{6c5b750 com.google.android.youtube/10145} BLOCKED
+09-30 12:30:48.454   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{7e99d49 com.google.android.googlequicksearchbox/10123} BLOCKED
+09-30 12:30:48.454   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{bda664e com.google.android.apps.messaging/10147} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{102c075 com.android.camera2/10135} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{57d836f com.google.android.gm/10133} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{b56f87c com.google.android.apps.wellbeing/10113} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{44dc80a com.google.android.apps.docs/10137} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{86c6d7e com.google.android.apps.maps/10139} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{9cd687b com.google.android.videos/10143} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{c6d2698 com.google.android.apps.photos/10134} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{eaba83c com.google.android.calendar/10146} BLOCKED
+09-30 12:30:48.457   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{791805b com.google.android.projection.gearhead/10118} BLOCKED
+09-30 12:30:55.637  5335  5335 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
+09-30 12:30:55.641  5335  5335 I AndroidRuntime: Using default boot image
+09-30 12:30:55.641  5335  5335 I AndroidRuntime: Leaving lock profiling enabled
+09-30 12:30:55.738  5335  5335 D AndroidRuntime: Calling main entry com.android.commands.monkey.Monkey
+09-30 12:30:55.738  5335  5335 W Monkey  : args: [-p, ito.telegram.debug, --throttle, 200, --pct-syskeys, 0, -v, 600]
+09-30 12:30:55.739  5335  5335 W Monkey  :  arg: "ito.telegram.debug"
+09-30 12:30:55.742  5335  5335 W Monkey  : data="ito.telegram.debug"
+09-30 12:30:55.756  5335  5335 I Monkey  : :AllowPackage: ito.telegram.debug
+09-30 12:30:55.767  5335  5335 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-30 12:30:55.768   504  1178 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:30:55.769  5335  5335 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-30 12:30:55.975  5335  5335 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-30 12:30:55.976   504   533 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:30:55.976  5335  5335 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-30 12:30:56.188   504   615 W InputDispatcher: Waiting because no window has focus but ActivityRecord{9c150b0 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-30 12:30:56.268   504   543 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +290ms
+09-30 12:30:56.284   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:56.290   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:57.402  1479  1479 I AndroidIME: AbstractIme.onActivate():84 DummyIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = PhoneNumber : Learning = Disable : Suggestion = Hide : AutoCorrection = Disable : Microphone = Hide : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-30 12:30:57.409  1479  1479 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-30 12:30:57.419   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:58.091   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:58.459   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:58.683   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{e6d5b52 com.google.android.setupwizard/10114} BLOCKED
+09-30 12:30:58.683   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{9cd687b com.google.android.videos/10143} BLOCKED
+09-30 12:30:58.684   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{791805b com.google.android.projection.gearhead/10118} BLOCKED
+09-30 12:30:58.716   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:58.953   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:30:59.017   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:00.038   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:00.484   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:01.103   504   615 D InputDispatcher: Waiting to send key to Window{c4285c8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:01.305  5335  5335 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-30 12:31:01.306   504  1869 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:31:01.307  5335  5335 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-30 12:31:01.453   504   543 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +146ms
+09-30 12:31:01.728   504   615 W InputDispatcher: Waiting because no window has focus but ActivityRecord{9d566e3 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-30 12:31:02.078   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:02.917   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:03.341   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:03.423  1479  1479 I AndroidIME: AbstractIme.onActivate():84 DummyIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = PhoneNumber : Learning = Disable : Suggestion = Hide : AutoCorrection = Disable : Microphone = Hide : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-30 12:31:03.427  1479  1479 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-30 12:31:03.686   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:03.706   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:03.935   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:04.145   504   615 D InputDispatcher: Waiting to send key to Window{68f63dd u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:04.764   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:05.169   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:05.371   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:05.573   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:05.781   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:05.997   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:06.402   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:06.606   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:07.426   504   615 D InputDispatcher: Waiting to send key to Window{8126bc2 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:10.497   504   615 D InputDispatcher: Waiting to send key to Window{8126bc2 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:10.918   504   615 D InputDispatcher: Waiting to send key to Window{eed8e3f u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:11.137   504   615 D InputDispatcher: Waiting to send key to Window{2d1ae46 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:11.342  5335  5335 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-30 12:31:11.344   504  2076 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:31:11.345  5335  5335 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-30 12:31:11.553   504   615 W InputDispatcher: Waiting because no window has focus but ActivityRecord{3378515 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-30 12:31:11.586   504   543 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +241ms
+09-30 12:31:11.887  2804  2804 I chatty  : uid=10167(ito.telegram.debug) identical 1 line
+09-30 12:31:11.888  2804  2804 I chatty  : uid=10167(ito.telegram.debug) identical 1 line
+09-30 12:31:11.888  2804  2804 I chatty  : uid=10167(ito.telegram.debug) identical 1 line
+09-30 12:31:11.888  2804  2804 I chatty  : uid=10167(ito.telegram.debug) identical 1 line
+09-30 12:31:12.035  2804  2804 I chatty  : uid=10167(ito.telegram.debug) identical 22 lines
+09-30 12:31:12.968  5335  5335 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-30 12:31:12.969   504  1968 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:31:12.969  5335  5335 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-30 12:31:13.250   504   543 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +279ms
+09-30 12:31:13.616   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:13.647   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:13.890   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:14.062   504  5458 I PackageDexOptimizer: Running dexopt (dexoptNeeded=1) on: /data/app/~~Ta269zb9Ok7kDwUvY_6S0A==/ito.telegram.debug-RFGh9jVdOPQGO3q27qAYTQ==/base.apk pkg=ito.telegram.debug isa=x86_64 dexoptFlags=boot_complete,debuggable,public,enable_hidden_api_checks targetFilter=verify oatDir=/data/app/~~Ta269zb9Ok7kDwUvY_6S0A==/ito.telegram.debug-RFGh9jVdOPQGO3q27qAYTQ==/oat classLoaderContext=PCL[]{}
+09-30 12:31:14.063   440   588 V installd: DexInv: --- BEGIN '/data/app/~~Ta269zb9Ok7kDwUvY_6S0A==/ito.telegram.debug-RFGh9jVdOPQGO3q27qAYTQ==/base.apk' ---
+09-30 12:31:14.071  5463  5463 I dex2oat32: /apex/com.android.art/bin/dex2oat32 --input-vdex-fd=-1 --output-vdex-fd=9 --updatable-bcp-packages-file=/system/etc/updatable-bcp-packages.txt --resolve-startup-const-strings=true --max-image-block-size=524288 --compiler-filter=verify --debuggable --classpath-dir=/data/app/~~Ta269zb9Ok7kDwUvY_6S0A==/ito.telegram.debug-RFGh9jVdOPQGO3q27qAYTQ== --class-loader-context=PCL[]{} --generate-mini-debug-info --compact-dex-level=none --compilation-reason=boot
+09-30 12:31:14.921   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:15.550   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:15.619  1479  1479 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-30 12:31:15.643  1479  1479 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-30 12:31:15.866   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:16.324   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:16.650  1479  1479 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-30 12:31:16.705  1479  1479 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-30 12:31:16.880  1479  1479 I AndroidIME: AbstractIme.onActivate():84 LatinIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = Text : Learning = Enable : Suggestion = Show : AutoCorrection = Enable : Microphone = Show : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-30 12:31:16.893  1479  1479 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-30 12:31:17.391  5463  5463 I chatty  : uid=50167(ito.telegram.debug) /apex/com.android.art/bin/dex2oat32 identical 1 line
+09-30 12:31:17.397   504   615 W InputDispatcher: Window Window{afa77b1 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} already unregistered input channel
+09-30 12:31:17.610   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:17.624   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:18.117   440   588 V installd: DexInv: --- END '/data/app/~~Ta269zb9Ok7kDwUvY_6S0A==/ito.telegram.debug-RFGh9jVdOPQGO3q27qAYTQ==/base.apk' (success) ---
+09-30 12:31:18.159   504  5458 I BackgroundDexOptService: Pinning optimized code {android, ito.telegram.debug}
+09-30 12:31:18.161   504  5458 D IorapForwardingService: onPackagesUpdated: ito.telegram.debug
+09-30 12:31:18.446   504   615 D InputDispatcher: Waiting to send key to Window{fd2ead8 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:18.659   504   615 D InputDispatcher: Waiting to send key to Window{9511f8d u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:18.676   504   615 D InputDispatcher: Waiting to send key to Window{9511f8d u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:18.791   504   560 I AppsFilter: interaction: PackageSetting{8f6913 ito.telegram.debug/10167} -> PackageSetting{57d836f com.google.android.gm/10133} BLOCKED
+09-30 12:31:18.883  5335  5335 I Monkey  : :Switch: #Intent;action=android.intent.action.MAIN;category=android.intent.category.LAUNCHER;launchFlags=0x10200000;component=ito.telegram.debug/ito.telegram.MainActivity;end
+09-30 12:31:18.885   504  1157 I ActivityTaskManager: START u0 {act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=ito.telegram.debug/ito.telegram.MainActivity} from uid 2000
+09-30 12:31:18.886  5335  5335 I Monkey  :     // Allowing start of Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=ito.telegram.debug/ito.telegram.MainActivity } in package ito.telegram.debug
+09-30 12:31:19.218   504   543 I ActivityTaskManager: Displayed ito.telegram.debug/ito.telegram.MainActivity: +333ms
+09-30 12:31:19.337   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:19.652   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:19.760  1479  1479 I AndroidIME: AbstractIme.onActivate():84 DummyIme.onActivate() : EditorInfo = Package = ito.telegram.debug : Type = PhoneNumber : Learning = Disable : Suggestion = Hide : AutoCorrection = Disable : Microphone = Hide : NoPersonalizedLearning = Disable : AutoStartVoiceInput = Disable, IncognitoMode = false
+09-30 12:31:19.768  1479  1479 I ConversationToQueryExtension: ConversationToQueryExtension.isEnabledForHostApp():252 Conv2Query not enabled due to current app [ito.telegram.debug] not in whitelist
+09-30 12:31:19.893   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:20.118   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:20.549   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:21.064   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:21.482   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:21.691   504   615 D InputDispatcher: Waiting to send key to Window{26536a1 u0 ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:22.306   504   615 D InputDispatcher: Waiting to send key to Window{f4c2fc2 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:22.510   504   615 D InputDispatcher: Waiting to send key to Window{f4c2fc2 u0 AtchDlg:ito.telegram.debug/ito.telegram.MainActivity} because there are unprocessed events that may cause focus to change
+09-30 12:31:23.130   504   615 W InputDispatcher: Waiting because no window has focus but ActivityRecord{2bfa550 u0 ito.telegram.debug/ito.telegram.MainActivity t9} may eventually add a window when it finishes starting up. Will wait for 5000ms
+09-30 12:31:23.538  5335  5335 I AndroidRuntime: VM exiting with result code 0.
