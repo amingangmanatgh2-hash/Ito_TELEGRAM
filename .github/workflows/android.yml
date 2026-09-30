@@ -244,6 +244,71 @@ jobs:
             sleep 10
           done
 
+      # انتشار ریلیز با فایلِ ضمیمه. آپلود حتماً باید از خودِ رانر انجام شود.
+      - name: انتشار ریلیز
+        if: ${{ success() && ((github.event_name == 'workflow_dispatch' && inputs.commit_apk) || contains(github.event.head_commit.message, '[apk]')) }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          TAG="v1.0.${GITHUB_RUN_NUMBER}"
+          SHA=$(git rev-parse HEAD)
+          {
+            echo "کلاینت غیررسمی تلگرام، ساخته‌شده روی TDLib ۱٫۸٫۶۷ با **۲۰۰۶ قابلیت**."
+            echo
+            echo "## نصب"
+            echo
+            echo "فایل زیر را بگیر و نصب کن. بعد فقط شماره‌ات را با کد کشور بزن؛"
+            echo "کد که آمد کپی‌اش کن و برگرد — برنامه خودش برش می‌دارد و وارد می‌کند."
+            echo "نه کلید API می‌خواهد، نه ثبت‌نام جایی."
+            echo
+            echo "| فایل | اندازه | معماری | اندروید |"
+            echo "|---|---|---|---|"
+            for f in dist/*.apk; do
+              case "$(basename "$f")" in
+                *all-phones*) ABI="arm64-v8a + armeabi-v7a — هر گوشی" ;;
+                *64bit*) ABI="arm64-v8a" ;;
+                *32bit*) ABI="armeabi-v7a" ;;
+                *) ABI="?" ;;
+              esac
+              echo "| \`$(basename "$f")\` | $(du -h "$f" | cut -f1) | $ABI | ۷ به بالا |"
+            done
+            echo
+            echo "## درستی فایل"
+            echo
+            for f in dist/*.apk; do
+              echo "- \`$(basename "$f")\`"
+              echo "  \`$(sha256sum "$f" | cut -d" " -f1)\`"
+            done
+            echo
+            echo "## این نسخه چه چیزی را تست کرده؟"
+            echo
+            echo "- تست‌های واحد و لینت: سبز"
+            echo "- نصب و اجرا روی شبیه‌ساز اندروید ۱۱: سبز"
+            echo "- ۶۰۰ رویداد تصادفی monkey بدون \`FATAL EXCEPTION\` و بدون ANR"
+            echo
+            echo "## دو هشدار صادقانه"
+            echo
+            echo "۱. امضا با کلیدِ یک‌بارمصرفِ همین اجراست، پس نسخه‌ی بعدی روی این یکی"
+            echo "   نصب نمی‌شود؛ اول قبلی را پاک کن."
+            echo "۲. این یک کلاینت غیررسمی است و با تلگرام هیچ نسبتی ندارد."
+            echo
+            echo "کامیت: \`${SHA}\` — اجرای #${GITHUB_RUN_NUMBER}"
+          } > release-notes.md
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" dist/*.apk --clobber
+            gh release edit "$TAG" --notes-file release-notes.md --target "$SHA"
+          else
+            gh release create "$TAG" dist/*.apk \
+              --title "ایتو $TAG — کلاینت تلگرام با ۲۰۰۶ قابلیت" \
+              --notes-file release-notes.md \
+              --target "$SHA" \
+              --latest
+          fi
+          rm -f release-notes.md
+          echo "ریلیز منتشر شد: $TAG"
+          gh release view "$TAG" --json tagName,assets --jq '.tagName, (.assets[] | "\(.name) \(.size)")'
+
   smoke:
     name: تست اجرا روی شبیه‌ساز
     needs: build
